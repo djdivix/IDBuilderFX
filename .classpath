@@ -3,14 +3,15 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/fontbox-2.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/jempbox-1.8.11.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/pdfbox-2.0.4 (1).jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/pdfbox-app-2.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/pdfbox-debugger-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/pdfbox-tools-2.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/preflight-2.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/preflight-app-2.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DJ DiV$X/Desktop/wtf/IDBuilderFX/Libraries/xmpbox-2.0.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Libraries"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/fontbox-2.0.4.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/jempbox-1.8.11.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/pdfbox-2.0.4 (1).jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/pdfbox-app-2.0.4.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/pdfbox-debugger-2.0.0.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/pdfbox-tools-2.0.4.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/preflight-2.0.4.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/preflight-app-2.0.4.jar"/>
+	<classpathentry kind="lib" path="E:/E/DJ/Libraries/xmpbox-2.0.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
