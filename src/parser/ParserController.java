@@ -21,7 +21,8 @@ public class ParserController {
 		for (String fileName : files) {
 			System.out.println("C://PdfBox_Examples//" + fileName);
 			String text = ExtractText.extractPdf("C://PdfBox_Examples//" + fileName);
-	//		System.out.println(text);
+//			System.out.println(text);
+			
 			String name1=FetchName.findName(text).trim();
 			System.out.println("______________________________________________________________________________________________________________");
 			System.out.println("NAME   "+name1);
@@ -37,9 +38,15 @@ public class ParserController {
 			String address1=FetchAddress.findAddress(text).trim();
 			System.out.println("ADDRESS  "+address1);
 			text=text.replaceAll(address1,"");
-System.out.println(text);
+			String dob1=FetchDob.findDob(text).trim();
+			System.out.println("DATE OF BIRTH  "+dob1);
+			text=text.replaceAll(dob1,"");
+			String gender1=FetchGender.findGender(text).trim();
+			System.out.println("GENDER  "+gender1);
+			text=text.replaceAll(gender1,"");
 			System.out.println("______________________________________________________________________________________________________________");
-			System.out.println("______________________________________________________________________________________________________________");
+			System.out.println(text);
+	//		System.out.println("______________________________________________________________________________________________________________");
 			System.out.println("______________________________________________________________________________________________________________");
 			name.setText(FetchName.findName(text));
 			email.setText(FetchEmail.findEmail(text));
