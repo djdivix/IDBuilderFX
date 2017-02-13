@@ -12,6 +12,6 @@ public class FetchPhone {
 		if (m.find())
 			return m.group();
 		else
-			return null;
+			return "NOT FOUND";
 	}
 }

@@ -4,7 +4,7 @@ public class FetchAddress {
 public static String findAddress(String txt){
 	String[] lines = txt.split("\r\n|\r|\n");
 	int len=lines.length;
-	String[] pattern={"linguistic","areaofinterest","declaration"};
+	String[] pattern={"linguistic","areaofinterest","declaration","address"};
 	int i=0,m=0,flag=0,f=0;
 	for(String s:lines)
 	{
@@ -17,12 +17,13 @@ public static String findAddress(String txt){
 		else if(s1.contains("address"))
 		{
 			i=s1.indexOf("address");
-			i=s1.indexOf(' ', i+1);
-			String add=s.substring(i+1).trim();
+			String add=s.substring(i+7).trim();
+			if(Character.isAlphabetic(add.charAt(0))==false)
+				add=add.substring(1);
 			flag=m+1;
 			while(true)
 			{
-			for(String p:pattern)
+			for(String p:pattern)						//checking for next heading
 			{
 				if(lines[flag].toLowerCase().contains(p)||lines[flag].equals(" "))
 				{
@@ -54,6 +55,6 @@ public static String findAddress(String txt){
 		}
 		m++;
 		}
-	return "";
+	return "NOT FOUND";
 }
 }

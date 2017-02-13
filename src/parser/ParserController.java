@@ -44,12 +44,15 @@ public class ParserController {
 			String gender1=FetchGender.findGender(text).trim();
 			System.out.println("GENDER  "+gender1);
 			text=text.replaceAll(gender1,"");
+			String fatherName1=FetchFatherName.findFatherName(text).trim();
+			System.out.println("FATHER'S NAME  "+fatherName1);
+			text=text.replaceAll(fatherName1,"");
 			System.out.println("______________________________________________________________________________________________________________");
 			System.out.println(text);
 	//		System.out.println("______________________________________________________________________________________________________________");
 			System.out.println("______________________________________________________________________________________________________________");
-			name.setText(FetchName.findName(text));
-			email.setText(FetchEmail.findEmail(text));
+		//	name.setText(FetchName.findName(text));
+		//	email.setText(FetchEmail.findEmail(text));
 	
 		}
 	

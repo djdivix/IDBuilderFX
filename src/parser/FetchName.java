@@ -13,7 +13,7 @@ public class FetchName {
 		Pattern r = Pattern.compile(pattern);
 		Matcher m = r.matcher(lines[i]);
 		if (m.find())
-			return "Dummy";
+			return "NOT FOUND";
 		else
 			return (lines[i]);
 	}
