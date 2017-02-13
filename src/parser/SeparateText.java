@@ -1,4 +1,4 @@
-package seperator;
+package parser;
 
 public class SeparateText {
 public static String[] divide(String txt){
