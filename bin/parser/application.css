@@ -1,0 +1,20 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#name {
+	-fx-font-size: 20px ;
+}
+#email {
+	-fx-font-size: 20px ;
+}
+#parse {
+	-fx-font-size: 60px ;
+}
+.root {
+	-fx-background-color: yellow;
+}
+
+/*To apply css to all buttons or labels
+ * .button{
+ * }
+ * .label{
+ * }
+ */
