@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="filechooser.FileChooserController">
    <children>
       <Button layoutX="584.0" layoutY="535.0" mnemonicParsing="false" text="Next" />
-      <Button fx:id="selectfilebtn" layoutX="572.0" layoutY="313.0" mnemonicParsing="false" onAction="#selectfile" prefHeight="50.0" prefWidth="106.0" text="Select File" />
+      <Button fx:id="selectfilebtn" layoutX="572.0" layoutY="313.0" mnemonicParsing="false" onAction="#selectfile" prefHeight="50.0" prefWidth="106.0" text="Browse Files" />
       <Label fx:id="fclabel" layoutX="86.0" layoutY="314.0" prefHeight="48.0" prefWidth="478.0">
          <font>
             <Font size="18.0" />
@@ -17,6 +17,11 @@
       <Text blendMode="SRC_ATOP" layoutX="136.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT RESUME FILE  (in PDF)" textAlignment="CENTER" wrappingWidth="488.9999896287918">
          <font>
             <Font size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="86.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected File">
+         <font>
+            <Font size="14.0" />
          </font>
       </Text>
    </children>

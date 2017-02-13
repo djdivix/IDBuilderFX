@@ -1,4 +1,4 @@
-package filechooser;
+package multifilechooser;
 
 import java.io.IOException;	
 
@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-public class MainFileChooser extends Application {
+public class MainmultiFileChooser extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		Parent root = FXMLLoader.load(getClass().getResource("FileChooserFXML.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("MultifilechooserFXML.fxml"));
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("FileChooserCSS.css").toExternalForm());
-		primaryStage.setTitle("IDBuilder - Select Single PDF File");
+		scene.getStylesheets().add(getClass().getResource("MultifilechooserCSS.css").toExternalForm());
+		primaryStage.setTitle("IDBuilder - Select Multiple PDF Files");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
