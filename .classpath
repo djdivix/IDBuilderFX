@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="lib/preflight-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/preflight-app-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/xmpbox-2.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.16.1 .jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
