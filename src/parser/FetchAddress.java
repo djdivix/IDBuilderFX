@@ -6,7 +6,6 @@ public static String findAddress(String txt){
 	int len=lines.length;
 	String[] pattern={"linguistic","areaofinterest","declaration"};
 	int i=0,m=0,flag=0,f=0;
-	//jkjkkhkkgk
 	for(String s:lines)
 	{
 		String s1=s.toLowerCase();
