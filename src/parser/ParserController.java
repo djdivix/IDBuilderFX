@@ -14,7 +14,7 @@ public class ParserController {
 	private Label name;
 
 	public void parsePDF(ActionEvent event) throws IOException {
-	//	database.DeleteAllEntries.deleteAll();
+		database.DeleteAllEntries.deleteAll();
 		File directory = new File("C://PdfBox_Examples//");
 		String[] files = directory.list();
 		int empid=0;
@@ -58,11 +58,11 @@ public class ParserController {
 			System.out.println(text);
 	//		System.out.println("______________________________________________________________________________________________________________");
 			System.out.println("______________________________________________________________________________________________________________");
-		//	name.setText(FetchName.findName(text));
-		//	email.setText(FetchEmail.findEmail(text));
+			//name.setText(FetchName.findName(text));
+			//email.setText(FetchEmail.findEmail(text));
 			//Now Storing in database
 			empid+=1;
-	//		database.StoreEmployeeDetails.storeDetails(empid,name1, email1, phone1, address1, dob1, gender1, fatherName1);
+			database.StoreEmployeeDetails.storeDetails(empid,name1, email1, phone1, address1, dob1, gender1, fatherName1);
 		}
 	
 	}
