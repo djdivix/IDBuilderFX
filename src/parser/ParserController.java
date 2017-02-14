@@ -2,8 +2,6 @@ package parser;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -16,14 +14,14 @@ public class ParserController {
 	private Label name;
 
 	public void parsePDF(ActionEvent event) throws IOException {
-		database.DeleteAllEntries.deleteAll();
+	//	database.DeleteAllEntries.deleteAll();
 		File directory = new File("C://PdfBox_Examples//");
 		String[] files = directory.list();
 		int empid=0;
 		for (String fileName : files) {
 			System.out.println("C://PdfBox_Examples//" + fileName);
 			String text = ExtractText.extractPdf("C://PdfBox_Examples//" + fileName);
-//			System.out.println(text);
+			System.out.println(text);
 			System.out.println("______________________________________________________________________________________________________________");
 		//First Fetching then Displaying then removing all fields
 			//Name
@@ -64,7 +62,7 @@ public class ParserController {
 		//	email.setText(FetchEmail.findEmail(text));
 			//Now Storing in database
 			empid+=1;
-			database.StoreEmployeeDetails.storeDetails(empid,name1, email1, phone1, address1, dob1, gender1, fatherName1);
+	//		database.StoreEmployeeDetails.storeDetails(empid,name1, email1, phone1, address1, dob1, gender1, fatherName1);
 		}
 	
 	}
