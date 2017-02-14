@@ -22,7 +22,7 @@ public class FileChooserController {
 	private Label fclabel;
 	@FXML
 	private Label warnlabel;
-	File selectedFile;
+	public static File selectedFile=null;
 	public void selectfile(ActionEvent event) {
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File ("C:\\PdfBox_Examples"));
@@ -35,6 +35,9 @@ public class FileChooserController {
 		else{
 			fclabel.setText("Invalid File");
 		}
+	}
+	public static File getSelectedFile(){
+		return selectedFile;
 	}
 	public void next(ActionEvent event) throws IOException{
 		if(selectedFile!=null)
