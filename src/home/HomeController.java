@@ -27,7 +27,7 @@ public class HomeController {
 		   stage = new Stage();
 		   root = FXMLLoader.load(getClass().getResource("/login/LoginFXML.fxml"));
 		   scene = new Scene(root);
-		   scene.getStylesheets().add(getClass().getResource("LoginCSS.css").toExternalForm());
+		   scene.getStylesheets().add(getClass().getResource("/login/LoginCSS.css").toExternalForm());
 		   stage.setTitle("IDBuilder - Login PopUp Window");
 		   stage.setScene(scene);
 		   
