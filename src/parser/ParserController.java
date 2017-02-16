@@ -5,11 +5,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import filechooser.FileChooserController;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import multifilechooser.MultiFileChooserController;
 
 public class ParserController {
 
 	public void parsePDF(ActionEvent event) throws IOException {
+		
+		
+		Stage stage;
+		Stage currstage;
+		Parent root;
+		Scene scene;
+		
 		
 		File singleFile = null;
 		String text = "";
@@ -67,6 +79,16 @@ public class ParserController {
 				"______________________________________________________________________________________________________________");
 		empid += 1;
 		database.StoreEmployeeDetails.storeDetails(empid, name1, email1, phone1, address1, dob1, gender1, fatherName1);
+		//Open window
+		stage = new Stage();
+		root = FXMLLoader.load(getClass().getResource("/viewSingleParsed/ViewSingleParsedFXML.fxml"));
+		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/viewSingleParsed/ViewSingleParsedCSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Preview Parsed Data");
+		currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+	    currstage.close();
+		stage.setScene(scene);
+		stage.show();
 		}
 		else{
 			for (String i : multiFiles) {
@@ -112,12 +134,16 @@ public class ParserController {
 				empid += 1;
 				database.StoreEmployeeDetails.storeDetails(empid, name1, email1, phone1, address1, dob1, gender1, fatherName1);
 			}
+			stage = new Stage();
+			root = FXMLLoader.load(getClass().getResource("/viewMultiParsed/ViewMultiParsedFXML.fxml"));
+			scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/viewMultiParsed/ViewMultiParsedCSS.css").toExternalForm());
+			stage.setTitle("IDBuilder - Preview Parsed Data");
+			currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+		    currstage.close();
+			stage.setScene(scene);
+			stage.show();
 		}
-
-
-		// name.setText(FetchName.findName(text));
-		// email.setText(FetchEmail.findEmail(text));
-		// Now Storing in database
 
 	}
 
