@@ -9,15 +9,15 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="multifilechooser.MultiFileChooserController">
    <children>
-      <Button fx:id="selectfilebtn" layoutX="492.0" layoutY="186.0" mnemonicParsing="false" onAction="#selectmultifiles" text="Browse Files" />
-      <Button layoutX="645.0" layoutY="543.0" mnemonicParsing="false" onAction="#next" text="Next" />
-      <ListView fx:id="fileslist" layoutX="185.0" layoutY="185.0" prefHeight="383.0" prefWidth="307.0" />
-      <Text layoutX="106.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MULTIPLE RESUME FILES (in PDF)" wrappingWidth="548.13671875">
+      <Button fx:id="selectfilebtn" layoutX="626.0" layoutY="487.0" mnemonicParsing="false" onAction="#selectmultifiles" text="Browse Files" />
+      <Button layoutX="666.0" layoutY="543.0" mnemonicParsing="false" onAction="#next" text="Next" />
+      <ListView fx:id="fileslist" layoutX="49.0" layoutY="184.0" prefHeight="302.0" prefWidth="661.0" />
+      <Text layoutX="83.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MULTIPLE RESUME FILES    (in PDF)" textAlignment="CENTER" wrappingWidth="594.13671875">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="185.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Files" wrappingWidth="307.00000554323196">
+      <Text layoutX="49.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Files" wrappingWidth="307.00000554323196">
          <font>
             <Font size="14.0" />
          </font>

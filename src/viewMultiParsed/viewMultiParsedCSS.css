@@ -1,0 +1,13 @@
+.table-row-cell:focused {
+    -fx-background-color:#FFD700;
+}
+.table-view .table-cell{
+    -fx-font-size:15px;
+
+}
+.table-view .column-header{
+	-fx-font-size:20px;
+}
+.button{
+	-fx-background-color: yellow;
+}
