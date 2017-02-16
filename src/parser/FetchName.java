@@ -5,15 +5,13 @@ public class FetchName {
 		String name="";
 		boolean nameFound=true;
 		String[] lines = txt.split("\r\n|\r|\n");
-		while(lines[i].equals(" "))
+		while(lines[i].trim().equals(""))					//checking after trim
 		i++;
-		for(int loop=0;loop<lines[i].trim().length();loop++)
+		for(int loop=0;loop<lines[i].length();loop++)
 		{
 			char tempChar=lines[i].charAt(loop);
-			//check for 
 			if((tempChar>=33&&tempChar<=64)||(tempChar>=91&&tempChar<=96)||(tempChar>=123&&tempChar<=126))		//check each character should be alphabet or space
 			{
-				//System.out.println((int)(tempChar));
 				name="NOT FOUND";							
 				nameFound = false;
 			break;
