@@ -31,22 +31,24 @@
       </graphic>
       </Button>
       <Button layoutX="594.0" layoutY="15.0" mnemonicParsing="false" onAction="#loginbutton" prefHeight="25.0" prefWidth="60.0" text="LogIn" />
-      <Text layoutX="140.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to IDBuilder" wrappingWidth="476.13671875">
+      <Text layoutX="115.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to IDBuilderFX" wrappingWidth="530.13671875">
          <font>
             <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="194.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select one of the following Option and Click Next to continue." wrappingWidth="368.373046875" />
-      <RadioButton fx:id="singleResume" layoutX="215.0" layoutY="424.0" mnemonicParsing="false" onAction="#radioSelect" text="Single Resume">
+      <Text layoutX="214.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select one of the following Option and Click Next to continue." wrappingWidth="368.373046875" />
+      <RadioButton fx:id="singleResume" layoutX="235.0" layoutY="398.0" mnemonicParsing="false" onAction="#radioSelect" text="Single Resume">
          <toggleGroup>
             <ToggleGroup fx:id="choice_rbtn" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="multipleResumes" layoutX="388.0" layoutY="424.0" mnemonicParsing="false" onAction="#radioSelect" text="Muliple Resumes" toggleGroup="$choice_rbtn" />
+      <RadioButton fx:id="multipleResumes" layoutX="417.0" layoutY="398.0" mnemonicParsing="false" onAction="#radioSelect" text="Muliple Resumes" toggleGroup="$choice_rbtn" />
       <Button layoutX="583.0" layoutY="542.0" mnemonicParsing="false" onAction="#nextbtn" prefHeight="25.0" prefWidth="59.0" text="Next" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="305.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/card_employer_badge_identification-512.png" />
          </image>
       </ImageView>
+      <Text layoutX="384.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DiViXTech's™" />
+      <Text layoutX="14.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mohammed Habeeb © Divyanshu Vishwakarma Ayushi Kakkar" />
    </children>
 </AnchorPane>
