@@ -14,7 +14,7 @@ public static String findDob(String txt)
 			{
 				indexKeyFound=tempLine.toLowerCase().indexOf(tempdobKey);
 				{
-					if(indexKeyFound==0||Character.isAlphabetic(tempLine.charAt(indexKeyFound-1))==false)			//check for any other word containing key
+					if(indexKeyFound==0||Character.isAlphabetic(tempLine.charAt(indexKeyFound-1))==false)			//check for any other word containing key like Adobe
 						{
 							tempString=tempLine;
 							tempString=tempString.substring(indexKeyFound+tempdobKey.length()+1).trim();			//removing word that is matches
@@ -26,7 +26,7 @@ public static String findDob(String txt)
 				}
 			}
 		}
-	}
-	return "NOT FOUND";
+		}
+		return "NOT FOUND";
 	}
 }

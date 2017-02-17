@@ -10,7 +10,7 @@ public class FetchName {
 		for(int loop=0;loop<lines[i].length();loop++)
 		{
 			char tempChar=lines[i].charAt(loop);
-			if((tempChar>=33&&tempChar<=64)||(tempChar>=91&&tempChar<=96)||(tempChar>=123&&tempChar<=126))		//check each character should be alphabet or space
+			if((tempChar>=33&&tempChar<=64)||(tempChar>=91&&tempChar<=96)||(tempChar>=123&&tempChar<=126))		//check for presence of special character using ASCII
 			{
 				name="NOT FOUND";							
 				nameFound = false;
@@ -24,8 +24,8 @@ public class FetchName {
 			i=lines.length;
 			name=lines[i-1];
 		}
-		if(Character.isDigit(name.charAt(name.length()-1)))
+		if(Character.isDigit(name.charAt(name.length()-1)))				//replace last character if it is digit
 			name=name.replace(name.charAt(name.length()-1), ' ');
 		return name;
-}
+	}
 }
