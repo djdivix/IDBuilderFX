@@ -33,6 +33,7 @@ public class LoginController {
 		{
 			flag=1;
 			user=rs.getString(2);
+			c.close();
 			statuslbl.setText("Logged In Succesfully");
 		    stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
 	        stage.close();
