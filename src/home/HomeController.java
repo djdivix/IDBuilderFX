@@ -8,8 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,17 +19,11 @@ public class HomeController {
 	private RadioButton singleResume;
 	@FXML
 	private RadioButton multipleResumes;
-	@FXML
-	private Button login1;
-	@FXML
-	private Label welcome;
 	Stage currstage;
 	Stage stage;
 	Parent root;
 	Scene scene;
 	public void loginbutton(ActionEvent event) throws IOException{
-		if(login1.getText().equalsIgnoreCase("LogIn"))
-		{
 		   stage = new Stage();
 		   root = FXMLLoader.load(getClass().getResource("/login/LoginFXML.fxml"));
 		   scene = new Scene(root);
@@ -42,17 +34,8 @@ public class HomeController {
 		   stage.initModality(Modality.APPLICATION_MODAL);
 		   //stage.initOwner(loginbtn.getScene().getWindow());
 		   stage.showAndWait();
-		   if (!login.LoginController.userName().equals("")){
-		   welcome.setText("Welcome, "+login.LoginController.userName());
-		   login1.setText("LogOut");
-		   }
 	} 
-		else if(login1.getText().equalsIgnoreCase("LogOut")){
-			login.LoginController.delete();
-			login1.setText("LogIn");
-			welcome.setText("");
-		}
-	}
+	
 	public void radioSelect(ActionEvent event){
 		if(singleResume.isSelected()){
 			CHOICE=1;
