@@ -40,7 +40,7 @@
 		</GridPane>
 	</center>
 	<bottom>
-		<Button layoutX="693.0" layoutY="552.0" mnemonicParsing="false" text="Next" BorderPane.alignment="BOTTOM_RIGHT">
+		<Button layoutX="693.0" layoutY="552.0" mnemonicParsing="false" onAction="#clicknext" text="Next" BorderPane.alignment="BOTTOM_RIGHT">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
