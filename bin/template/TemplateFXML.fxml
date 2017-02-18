@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+   <children>
+      <Text layoutX="109.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Template for ID Card" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="427.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload your own template. Coming Soon!" />
+   </children>
+</AnchorPane>
