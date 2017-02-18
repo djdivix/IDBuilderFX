@@ -2,6 +2,7 @@ package parser;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import filechooser.FileChooserController;
 import javafx.event.ActionEvent;
@@ -15,7 +16,7 @@ import multifilechooser.MultiFileChooserController;
 public class ParserController {
 	String name1 = "", email1 = "", phone1 = "", address1 = "", dob1 = "", gender1 = "", fatherName1 = "";
 	int empid = 0;
-	public void parsePDF(ActionEvent event) throws IOException {
+	public void parsePDF(ActionEvent event) throws IOException, SQLException {
 		Stage stage;
 		Stage currstage;
 		Parent root;
@@ -29,6 +30,7 @@ public class ParserController {
 			String singlefilePath = singleFile.getAbsolutePath().replaceAll("/", "//");
 			text = ExtractText.extractPdf(singlefilePath);
 			printoutput(text);
+		//	ExtractPhoto.findPhoto(singlefilePath,empid);
 			// Open window
 			stage = new Stage();
 			root = FXMLLoader.load(getClass().getResource("/viewSingleParsed/ViewSingleParsedFXML.fxml"));
@@ -44,6 +46,7 @@ public class ParserController {
 			for (String i : multiFiles) {
 				text = ExtractText.extractPdf(i.replaceAll("/", "//"));
 				printoutput(text);
+			//	ExtractPhoto.findPhoto(i,empid);
 			}
 			stage = new Stage();
 			root = FXMLLoader.load(getClass().getResource("/viewMultiParsed/ViewMultiParsedFXML.fxml"));
