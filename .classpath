@@ -5,7 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Libraries"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.16.1 .jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/opencv"/>
 	<classpathentry kind="lib" path="lib/fontbox-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/jempbox-1.8.11.jar"/>
 	<classpathentry kind="lib" path="lib/pdfbox-2.0.4 (1).jar"/>
@@ -16,6 +15,5 @@
 	<classpathentry kind="lib" path="lib/preflight-app-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/xmpbox-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/opencv-320.jar"/>
-	<classpathentry kind="lib" path="lib/opencv_java320.dll"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
