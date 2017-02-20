@@ -1,18 +1,24 @@
 package template;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class TemplateController implements Initializable{
 
@@ -52,6 +58,17 @@ public class TemplateController implements Initializable{
 			            }                
 			        }
 			});
+		}
+		public void next(ActionEvent event) throws IOException{
+			Stage stage = new Stage();
+			   Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplateFXML.fxml"));
+			   Scene scene = new Scene(root);
+			   scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplateCSS.css").toExternalForm());
+			   stage.setTitle("IDBuilder - Preview Template");
+			   Stage currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+		       currstage.close();
+			   stage.setScene(scene);
+			   stage.show();
 		}
 	
 	}

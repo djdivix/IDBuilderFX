@@ -23,6 +23,6 @@
       <RadioButton fx:id="temp2" layoutX="100.0" layoutY="344.0" mnemonicParsing="false" text="T2" toggleGroup="$temprb" />
       <RadioButton fx:id="temp3" layoutX="100.0" layoutY="403.0" mnemonicParsing="false" text="T3" toggleGroup="$temprb" />
       <ImageView fx:id="tempimg" fitHeight="350.0" fitWidth="350.0" layoutX="227.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="673.0" layoutY="550.0" mnemonicParsing="false" text="Next" />
+      <Button layoutX="673.0" layoutY="550.0" mnemonicParsing="false" onAction="#next" text="Next" />
    </children>
 </AnchorPane>
