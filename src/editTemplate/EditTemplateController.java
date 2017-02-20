@@ -1,15 +1,22 @@
 package editTemplate;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class EditTemplateController implements Initializable{
@@ -55,8 +62,15 @@ public class EditTemplateController implements Initializable{
 			doblbl.setText(rs.getString(6));
 			sexlbl.setText(rs.getString(7));
 			fnamelbl.setText(rs.getString(8));
+			byte[] imageInbyte=rs.getBytes(9);
+			BufferedImage img1=ImageIO.read(new ByteArrayInputStream(imageInbyte));
+			Image image = SwingFXUtils.toFXImage(img1, null);
+			photoimg.setImage(image);
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
