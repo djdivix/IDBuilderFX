@@ -63,10 +63,12 @@ public class EditTemplateController implements Initializable{
 			sexlbl.setText(rs.getString(7));
 			fnamelbl.setText(rs.getString(8));
 			byte[] imageInbyte=rs.getBytes(9);
+			if(imageInbyte!=null)          //TEMPORARILY ADDED IF NO IMAGE
+			{
 			BufferedImage img1=ImageIO.read(new ByteArrayInputStream(imageInbyte));
 			Image image = SwingFXUtils.toFXImage(img1, null);
 			photoimg.setImage(image);
-			}
+			}}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

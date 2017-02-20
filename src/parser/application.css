@@ -8,13 +8,9 @@
 #parse {
 	-fx-font-size: 60px ;
 }
-.root {
-	-fx-background-color: white;
+.button{
+	-fx-background-color: Aquamarine;
 }
-
-/*To apply css to all buttons or labels
- * .button{
- * }
- * .label{
- * }
- */
+.button:pressed{
+	-fx-background-color: Turquoise;
+}

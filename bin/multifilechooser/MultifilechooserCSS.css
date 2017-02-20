@@ -1,0 +1,15 @@
+#fileslist{
+	-fx-background-color: Azure;
+}
+.list-cell{
+	-fx-background-color: LightCyan;
+}
+.list-cell:odd{
+	-fx-background-color: Azure;
+}
+.button{
+	-fx-background-color: Aquamarine;
+}
+.button:pressed{
+	-fx-background-color: Turquoise;
+}

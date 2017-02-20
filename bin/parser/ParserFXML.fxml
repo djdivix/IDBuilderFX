@@ -7,10 +7,23 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parser.ParserController">
    <children>
-      <Button layoutX="160.0" layoutY="269.0" mnemonicParsing="false" onAction="#parsePDF" prefHeight="137.0" prefWidth="444.0" text="Click on This Button to Start Parsing!" textFill="#119e36" />
-      <Text layoutX="282.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PARSER" wrappingWidth="170.26171875">
+      <Button layoutX="157.0" layoutY="180.0" mnemonicParsing="false" onAction="#parsePDF" prefHeight="137.0" prefWidth="444.0" text="Click on This Button to Start Parsing!" textFill="#119e36">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Text layoutX="443.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parser" wrappingWidth="170.26171875">
          <font>
             <Font size="48.0" />
+         </font>
+      </Text>
+      <Text layoutX="185.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IDBuilder">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <Text layoutX="380.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fx">
+         <font>
+            <Font name="System Italic" size="48.0" />
          </font>
       </Text>
    </children>

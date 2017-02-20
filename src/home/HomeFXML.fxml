@@ -32,7 +32,7 @@
       </graphic>
       </Button>
       <Button fx:id="login1" layoutX="594.0" layoutY="15.0" mnemonicParsing="false" onAction="#loginbutton" prefHeight="25.0" prefWidth="60.0" text="LogIn" />
-      <Text layoutX="115.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to IDBuilderFX" wrappingWidth="530.13671875">
+      <Text layoutX="115.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to IDBuilder" wrappingWidth="467.13671875">
          <font>
             <Font size="48.0" />
          </font>
@@ -49,13 +49,19 @@
             <Image url="@../images/card_employer_badge_identification-512.png" />
          </image>
       </ImageView>
-      <Text layoutX="384.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DiViXTech's™" />
-      <Text layoutX="14.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mohammed Habeeb © Divyanshu Vishwakarma Ayushi Kakkar" />
+      <Text layoutX="387.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DiViXTech's™" />
+      <Text layoutX="14.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Mohammed Habeeb Divyanshu Vishwakarma Ayushi Kakkar" />
       <Label fx:id="welcome" layoutX="407.0" layoutY="14.0" prefHeight="27.0" prefWidth="183.0" textAlignment="RIGHT" textFill="#23bf35">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="notlogin" layoutX="485.0" layoutY="499.0" prefHeight="17.0" prefWidth="231.0" />
+      <Label fx:id="notlogin" layoutX="473.0" layoutY="509.0" prefHeight="17.0" prefWidth="265.0" textFill="RED" />
+      <Text layoutX="14.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Directed by Ms Vidushi" />
+      <Text layoutX="580.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fx" wrappingWidth="46.13671875">
+         <font>
+            <Font name="System Italic" size="48.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

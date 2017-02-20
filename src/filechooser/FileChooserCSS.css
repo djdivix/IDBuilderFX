@@ -1,3 +1,9 @@
 #fclabel{
-	-fx-background-color: cyan;
+	-fx-background-color: Azure;
+}
+.button{
+	-fx-background-color: Aquamarine;
+}
+.button:pressed{
+	-fx-background-color: Turquoise;
 }

@@ -1,3 +1,6 @@
 .button{
-	-fx-background-color: yellow;
+	-fx-background-color: Aquamarine;
+}
+.button:pressed{
+	-fx-background-color: Turquoise;
 }

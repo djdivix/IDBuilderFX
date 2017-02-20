@@ -39,5 +39,6 @@ public class ExtractPhoto {
 			if(imageFound==1)
 				break;
 }
+	document.close();	
 	}
 }

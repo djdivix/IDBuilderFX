@@ -34,6 +34,7 @@ public class HomeController {
 	public void loginbutton(ActionEvent event) throws IOException{
 		if(login1.getText().equalsIgnoreCase("LogIn"))
 		{
+			notlogin.setText("");
 		   stage = new Stage();
 		   root = FXMLLoader.load(getClass().getResource("/login/LoginFXML.fxml"));
 		   scene = new Scene(root);
@@ -68,6 +69,7 @@ public class HomeController {
 		stage = new Stage();
 		if(!login1.getText().equalsIgnoreCase("LogIn"))
 		{
+			
 		if(CHOICE==1){
 			   root = FXMLLoader.load(getClass().getResource("/filechooser/FileChooserFXML.fxml"));
 			   scene = new Scene(root);
