@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -14,18 +15,17 @@ public class StorePhoto {
 		public static void storePhoto(int empId,BufferedImage img) throws IOException, SQLException
 		{
 			ByteArrayOutputStream baos=new ByteArrayOutputStream();
-			ImageIO.write(img,"jpg",baos);
+			ImageIO.write(img,"jpeg",baos);
 			byte[] imageInByte=baos.toByteArray();
-		Connection connection=SqliteConnection.getConnection();
-		Blob blob=connection.createBlob();
-		blob.setBytes(1, imageInByte);
+			Connection connection=SqliteConnection.getConnection();
 		try{
 			//create statement
-			Statement stmt=connection.createStatement();
 			//SQL
-			String sql="insert into Employee(photo)values('"+blob+"')where empId='"+empId+"'";
+			String sql="update Employee SET photo=? where empId='"+empId+"'";
 			//run sql
-			int i=stmt.executeUpdate(sql);
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setBytes(1,imageInByte);
+			preparedStatement.execute();
 			connection.close();
 			}
 			catch(Exception e){

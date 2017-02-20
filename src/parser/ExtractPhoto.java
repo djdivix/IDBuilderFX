@@ -18,21 +18,26 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 public class ExtractPhoto {
 	public static void findPhoto(String path,int empId) throws IOException, SQLException {
 		// Loading an existing document
+		int imageFound=0;
 		File file = new File(path);
 		PDDocument document=PDDocument.load(file);
 		PDPageTree list=document.getPages();
-		for(PDPage page:list){
-			PDResources pdResources=page.getResources();
-			for(COSName cosName:pdResources.getXObjectNames())
+		for(PDPage page:list){						//check in all pages of pdf
+			PDResources pdResources=page.getResources();		//get all resources
+			for(COSName cosName:pdResources.getXObjectNames())		//loop for all resources
 			{
 				PDXObject pdxObject=pdResources.getXObject(cosName);
-				 if (pdxObject instanceof PDImageXObject) {
+				 if (pdxObject instanceof PDImageXObject) {			//check that the resource is image
 		                File file1 = new File("C:/PDFcopy/" + System.nanoTime() + ".jpeg");
 		                BufferedImage br=((PDImageXObject) pdxObject).getImage();
 		                ImageIO.write(br, "jpeg", file1);
 		                database.StorePhoto.storePhoto(empId,br);
+		                imageFound=1;
+		                break;
 				 }
 			}
+			if(imageFound==1)
+				break;
 }
 	}
 }

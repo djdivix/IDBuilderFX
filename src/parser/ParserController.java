@@ -30,7 +30,7 @@ public class ParserController {
 			String singlefilePath = singleFile.getAbsolutePath().replaceAll("/", "//");
 			text = ExtractText.extractPdf(singlefilePath);
 			printoutput(text);
-		//	ExtractPhoto.findPhoto(singlefilePath,empid);
+		ExtractPhoto.findPhoto(singlefilePath,empid);
 			// Open window
 			stage = new Stage();
 			root = FXMLLoader.load(getClass().getResource("/viewSingleParsed/ViewSingleParsedFXML.fxml"));
@@ -46,7 +46,7 @@ public class ParserController {
 			for (String i : multiFiles) {
 				text = ExtractText.extractPdf(i.replaceAll("/", "//"));
 				printoutput(text);
-			//	ExtractPhoto.findPhoto(i,empid);
+				ExtractPhoto.findPhoto(i,empid);
 			}
 			stage = new Stage();
 			root = FXMLLoader.load(getClass().getResource("/viewMultiParsed/ViewMultiParsedFXML.fxml"));

@@ -25,6 +25,8 @@ public class HomeController {
 	private Button login1;
 	@FXML
 	private Label welcome;
+	@FXML
+	private Label notlogin;
 	Stage currstage;
 	Stage stage;
 	Parent root;
@@ -64,6 +66,8 @@ public class HomeController {
 	
 	public void nextbtn(ActionEvent event) throws IOException{
 		stage = new Stage();
+		if(!login1.getText().equalsIgnoreCase("LogIn"))
+		{
 		if(CHOICE==1){
 			   root = FXMLLoader.load(getClass().getResource("/filechooser/FileChooserFXML.fxml"));
 			   scene = new Scene(root);
@@ -84,5 +88,8 @@ public class HomeController {
 			stage.setScene(scene);
 			stage.show();
 		}
+		}
+		else
+			notlogin.setText("Please Login first from upper right corner");
 	}
 }
