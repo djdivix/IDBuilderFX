@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="parser.ParserController">
    <children>
-      <Button fx:id="button" layoutX="157.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="137.0" prefWidth="444.0" text="Click on This Button to Start Parsing!" textFill="#119e36">
+      <Button fx:id="button" layoutX="157.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="137.0" prefWidth="458.0" text="Click on This Button to Start Parsing!" textFill="#119e36">
          <font>
             <Font size="24.0" />
          </font></Button>
@@ -28,7 +28,7 @@
             <Font name="System Italic" size="48.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="pbar" layoutX="157.0" layoutY="412.0" prefHeight="18.0" prefWidth="412.0" progress="0.0" />
-      <ProgressIndicator fx:id="pind" layoutX="567.0" layoutY="387.0" prefHeight="64.0" prefWidth="70.0" progress="0.0" />
+      <ProgressBar fx:id="pbar" layoutX="157.0" layoutY="395.0" prefHeight="35.0" prefWidth="458.0" progress="0.0" />
+      <ProgressIndicator fx:id="pind" layoutX="351.0" layoutY="439.0" prefHeight="64.0" prefWidth="70.0" progress="0.0" />
    </children>
 </AnchorPane>

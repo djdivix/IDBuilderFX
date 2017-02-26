@@ -39,6 +39,10 @@ public class ExtractPhoto {
 			if(imageFound==1)
 				break;
 }
+		if(imageFound!=1){
+			BufferedImage in = ImageIO.read(new File("src/images/nopic.jpg"));
+            database.StorePhoto.storePhoto(empId,in);
+		}
 	document.close();	
 	}
 }

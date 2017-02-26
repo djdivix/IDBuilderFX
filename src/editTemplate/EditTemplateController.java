@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -59,12 +60,19 @@ public class EditTemplateController implements Initializable {
 	private Label selectedDir;
 	@FXML
 	private Label warnlbl;
-	@FXML
-	private Label warnlbl2;
-
+	
+	private int i=0;
+	private ArrayList<String> name = new ArrayList<String>();
+	private ArrayList<String> email = new ArrayList<String>();
+	private ArrayList<String> dob = new ArrayList<String>();
+	private ArrayList<String> mob = new ArrayList<String>();
+	private ArrayList<String> address = new ArrayList<String>();
+	private ArrayList<String> sex = new ArrayList<String>();
+	private ArrayList<String> fname = new ArrayList<String>();
+	BufferedImage[] img1 = new BufferedImage[multifilechooser.MultiFileChooserController.NOOFFILES+1]; 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		
 		DateFormat df = new SimpleDateFormat("dd/MM/yy");
 		Date dateobj = new Date();
 		System.out.println(df.format(dateobj));
@@ -80,6 +88,17 @@ public class EditTemplateController implements Initializable {
 		}
 		try {
 			while (rs.next()) {
+				name.add(rs.getString(2));
+				email.add(rs.getString(3));
+				mob.add(rs.getString(4));
+				address.add(rs.getString(5));
+				dob.add(rs.getString(6));
+				sex.add(rs.getString(7));
+				fname.add(rs.getString(8));
+				byte[] imageInbyte = rs.getBytes(9);
+				img1[i] = ImageIO.read(new ByteArrayInputStream(imageInbyte));
+				i++;
+				
 				namelbl.setText(rs.getString(2));
 				namelbl.setWrapText(true);
 				idatelbl.setText(df.format(dateobj));
@@ -91,14 +110,10 @@ public class EditTemplateController implements Initializable {
 				doblbl.setText(rs.getString(6));
 				sexlbl.setText(rs.getString(7));
 				fnamelbl.setText(rs.getString(8));
-				byte[] imageInbyte = rs.getBytes(9);
-				if (imageInbyte != null) // TEMPORARILY ADDED IF NO IMAGE
-				{
-					BufferedImage img1 = ImageIO.read(new ByteArrayInputStream(imageInbyte));
-					Image image = SwingFXUtils.toFXImage(img1, null);
-					photoimg.setImage(image);
-				}
-			}
+				BufferedImage img1 = ImageIO.read(new ByteArrayInputStream(imageInbyte));
+				Image image = SwingFXUtils.toFXImage(img1, null);
+				photoimg.setImage(image);
+		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,29 +124,47 @@ public class EditTemplateController implements Initializable {
 	}
 
 	public void selectDir(ActionEvent event) {
-		if (headtxt.getText().equals("Enter Name of Organisation")) {
-			warnlbl2.setText("");
-			warnlbl.setText("Enter name of Organisation first!");
+		warnlbl.setText("");
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		File fileselectedDirectory = directoryChooser.showDialog(null);
+
+		if (fileselectedDirectory == null) {
+			selectedDir.setText("No Folder Selected");
 			headtxt.requestFocus();
 		} else {
-			warnlbl.setText("");
-			DirectoryChooser directoryChooser = new DirectoryChooser();
-			File fileselectedDirectory = directoryChooser.showDialog(null);
-
-			if (fileselectedDirectory == null) {
-				selectedDir.setText("No Folder Selected");
-			} else {
-				warnlbl2.setText("");
-				selectedDir.setText(fileselectedDirectory.getAbsolutePath());
-			}
+			selectedDir.setText(fileselectedDirectory.getAbsolutePath());
+			headtxt.requestFocus();
 		}
 	}
 
 	public void onGenerate(ActionEvent event) throws IOException {
-		if (selectedDir.getText().equals("No Folder Selected")) {
-			warnlbl.setText("");
-			warnlbl2.setText("Select Output Folder first!");
+		if (headtxt.getText().equals("Enter Name of Organisation")) {
+			warnlbl.setText("Enter name of Organisation first!");
+			headtxt.requestFocus();
+		} else if (selectedDir.getText().equals("No Folder Selected")) {
+			warnlbl.setText("Select Output Folder first!");
+			headtxt.requestFocus();
 		} else {
+			DateFormat df = new SimpleDateFormat("dd/MM/yy");
+			Date dateobj = new Date();
+			System.out.println(df.format(dateobj));
+			
+			for (int j=0;j<i;j++){
+				namelbl.setText(name.get(j));
+				namelbl.setWrapText(true);
+				idatelbl.setText(df.format(dateobj));
+				emaillbl.setText(email.get(j));
+				moblbl.setText(mob.get(j));
+				addlbl.setText(address.get(j));
+				addlbl.setWrapText(true);
+				doblbl.setText(dob.get(j));
+				sexlbl.setText(sex.get(j));
+				fnamelbl.setText(fname.get(j));
+				Image image = SwingFXUtils.toFXImage(img1[j], null);
+				photoimg.setImage(image);
+			
+			
+			
 			WritableImage snapshot = stkpane.snapshot(null, null);
 
 			// TODO: probably use a file chooser here
@@ -143,6 +176,7 @@ public class EditTemplateController implements Initializable {
 				ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file);
 			} catch (IOException e) {
 				// TODO: handle exception here
+			}
 			}
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("/idGenerated/IdGeneratedFXML.fxml"));

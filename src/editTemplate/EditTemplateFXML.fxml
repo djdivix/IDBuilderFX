@@ -93,7 +93,6 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="warnlbl" layoutX="83.0" layoutY="516.0" prefHeight="17.0" prefWidth="293.0" textFill="RED" />
-      <Label fx:id="warnlbl2" layoutX="473.0" layoutY="516.0" prefHeight="17.0" prefWidth="230.0" textFill="RED" />
+      <Label fx:id="warnlbl" layoutX="433.0" layoutY="516.0" prefHeight="17.0" prefWidth="270.0" textAlignment="RIGHT" textFill="RED" />
 	</children>
 </AnchorPane>

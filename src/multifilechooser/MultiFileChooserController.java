@@ -28,7 +28,7 @@ public class MultiFileChooserController {
 	public static List<File> selectedFiles = null;
 	// public static String[] filearr;
 	public static ArrayList<String> mylist = new ArrayList<String>();
-
+	public static int NOOFFILES = 0;
 	public void selectmultifiles(ActionEvent event) {
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File("C:\\PdfBox_Examples"));
@@ -41,6 +41,7 @@ public class MultiFileChooserController {
 			for (int i = 0; i < selectedFiles.size(); i++) {
 				fileslist.getItems().add(selectedFiles.get(i).getAbsolutePath());
 				mylist.add(selectedFiles.get(i).getAbsolutePath());
+				NOOFFILES++;
 			}
 		} else {
 			// Provide Error in window
