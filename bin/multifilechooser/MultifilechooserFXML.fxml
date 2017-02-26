@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="multifilechooser.MultiFileChooserController">
    <children>
       <Button fx:id="selectfilebtn" layoutX="626.0" layoutY="487.0" mnemonicParsing="false" onAction="#selectmultifiles" text="Browse Files" />
-      <Button layoutX="666.0" layoutY="543.0" mnemonicParsing="false" onAction="#next" text="Next" />
+      <Button layoutX="593.0" layoutY="543.0" mnemonicParsing="false" onAction="#next" prefHeight="25.0" prefWidth="54.0" text="Next" />
       <ListView fx:id="fileslist" layoutX="49.0" layoutY="184.0" prefHeight="302.0" prefWidth="661.0" />
       <Text layoutX="83.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT MULTIPLE RESUME FILES    (in PDF)" textAlignment="CENTER" wrappingWidth="594.13671875">
          <font>
@@ -22,6 +22,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="warnlabel" layoutX="604.0" layoutY="519.0" prefHeight="17.0" prefWidth="123.0" textFill="#f80000" />
+      <Label fx:id="warnlabel" layoutX="557.0" layoutY="520.0" prefHeight="17.0" prefWidth="166.0" textAlignment="RIGHT" textFill="#f80000" />
+      <Button layoutX="666.0" layoutY="543.0" mnemonicParsing="false" onAction="#onExit" prefHeight="25.0" prefWidth="48.0" text="Exit" />
    </children>
 </AnchorPane>

@@ -22,37 +22,43 @@ public class FileChooserController {
 	private Label fclabel;
 	@FXML
 	private Label warnlabel;
-	public static File selectedFile=null;
+	public static File selectedFile = null;
+
 	public void selectfile(ActionEvent event) {
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File ("C:\\PdfBox_Examples"));
+		fc.setInitialDirectory(new File("C:\\PdfBox_Examples"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PDF Files", "*.pdf"));
 		selectedFile = fc.showOpenDialog(null);
-		
-		if(selectedFile != null){
+
+		if (selectedFile != null) {
 			fclabel.setText(selectedFile.getAbsolutePath());
-		}
-		else{
+		} else {
 			fclabel.setText("Invalid File");
 		}
 	}
-	public static File getSelectedFile(){
+
+	public static File getSelectedFile() {
 		return selectedFile;
 	}
-	public void next(ActionEvent event) throws IOException{
-		if(selectedFile!=null)
-		{
-		Stage stage = new Stage();
-		   Parent root = FXMLLoader.load(getClass().getResource("/parser/ParserFXML.fxml"));
-		   Scene scene = new Scene(root);
-		   scene.getStylesheets().add(getClass().getResource("/parser/application.css").toExternalForm());
-		   stage.setTitle("IDBuilder - Parser");
-		   Stage currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
-	       currstage.close();
-		   stage.setScene(scene);
-		   stage.show();
-	}
-		else{
+
+	public void next(ActionEvent event) throws IOException {
+		if (selectedFile != null) {
+			Stage stage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/parser/ParserFXML.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/parser/application.css").toExternalForm());
+			stage.setTitle("IDBuilder - Parser");
+			Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			currstage.close();
+			stage.setScene(scene);
+			stage.show();
+		} else {
 			warnlabel.setText("Choose Valid File First!");
 		}
-}}
+	}
+
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
+	}
+}

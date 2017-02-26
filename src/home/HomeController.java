@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class HomeController {
-	 
+
 	int CHOICE;
 	@FXML
 	private RadioButton singleResume;
@@ -31,67 +31,72 @@ public class HomeController {
 	Stage stage;
 	Parent root;
 	Scene scene;
-	public void loginbutton(ActionEvent event) throws IOException{
-		if(login1.getText().equalsIgnoreCase("LogIn"))
-		{
+
+	public void loginbutton(ActionEvent event) throws IOException {
+		if (login1.getText().equalsIgnoreCase("LogIn")) {
 			notlogin.setText("");
-		   stage = new Stage();
-		   root = FXMLLoader.load(getClass().getResource("/login/LoginFXML.fxml"));
-		   scene = new Scene(root);
-		   scene.getStylesheets().add(getClass().getResource("/login/LoginCSS.css").toExternalForm());
-		   stage.setTitle("IDBuilder - Login PopUp Window");
-		   stage.setScene(scene);
-		   
-		   stage.initModality(Modality.APPLICATION_MODAL);
-		   //stage.initOwner(loginbtn.getScene().getWindow());
-		   stage.showAndWait();
-		   if (!login.LoginController.userName().equals("")){
-		   welcome.setText("Welcome, "+login.LoginController.userName());
-		   login1.setText("LogOut");
-		   }
-	} 
-		else if(login1.getText().equalsIgnoreCase("LogOut")){
+			stage = new Stage();
+			root = FXMLLoader.load(getClass().getResource("/login/LoginFXML.fxml"));
+			scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/login/LoginCSS.css").toExternalForm());
+			stage.setTitle("IDBuilder - Login PopUp Window");
+			stage.setScene(scene);
+
+			stage.initModality(Modality.APPLICATION_MODAL);
+			// stage.initOwner(loginbtn.getScene().getWindow());
+			stage.showAndWait();
+			if (!login.LoginController.userName().equals("")) {
+				welcome.setText("Welcome, " + login.LoginController.userName());
+				login1.setText("LogOut");
+			}
+		} else if (login1.getText().equalsIgnoreCase("LogOut")) {
 			login.LoginController.delete();
 			login1.setText("LogIn");
 			welcome.setText("");
 		}
 	}
-	public void radioSelect(ActionEvent event){
-		if(singleResume.isSelected()){
-			CHOICE=1;
+
+	public void radioSelect(ActionEvent event) {
+		if (singleResume.isSelected()) {
+			CHOICE = 1;
 		}
-		if(multipleResumes.isSelected()){
-			CHOICE=2;
+		if (multipleResumes.isSelected()) {
+			CHOICE = 2;
 		}
 	}
-	
-	public void nextbtn(ActionEvent event) throws IOException{
+
+	public void nextbtn(ActionEvent event) throws IOException {
 		stage = new Stage();
-		if(!login1.getText().equalsIgnoreCase("LogIn"))
-		{
-			
-		if(CHOICE==1){
-			   root = FXMLLoader.load(getClass().getResource("/filechooser/FileChooserFXML.fxml"));
-			   scene = new Scene(root);
-			   scene.getStylesheets().add(getClass().getResource("/filechooser/FileChooserCSS.css").toExternalForm());
-			   stage.setTitle("IDBuilder - Select Single PDF File");
-			   currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
-		       currstage.close();
-			   stage.setScene(scene);
-			   stage.show();
-		}
-		if(CHOICE==2){
-			root = FXMLLoader.load(getClass().getResource("/multifilechooser/MultifilechooserFXML.fxml"));
-			scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/multifilechooser/MultifilechooserCSS.css").toExternalForm());
-			stage.setTitle("IDBuilder - Select Multiple PDF Files");
-			currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
-		    currstage.close();
-			stage.setScene(scene);
-			stage.show();
-		}
-		}
-		else
-			notlogin.setText("Please Login first from upper right corner");
+		if (!login1.getText().equalsIgnoreCase("LogIn")) {
+
+			if (CHOICE == 1) {
+				root = FXMLLoader.load(getClass().getResource("/filechooser/FileChooserFXML.fxml"));
+				scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/filechooser/FileChooserCSS.css").toExternalForm());
+				stage.setTitle("IDBuilder - Select Single PDF File");
+				currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				currstage.close();
+				stage.setScene(scene);
+				stage.show();
+			} else if (CHOICE == 2) {
+				root = FXMLLoader.load(getClass().getResource("/multifilechooser/MultifilechooserFXML.fxml"));
+				scene = new Scene(root);
+				scene.getStylesheets()
+						.add(getClass().getResource("/multifilechooser/MultifilechooserCSS.css").toExternalForm());
+				stage.setTitle("IDBuilder - Select Multiple PDF Files");
+				currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				currstage.close();
+				stage.setScene(scene);
+				stage.show();
+			} else {
+				notlogin.setText("Please select Single or Multiple Resume.");
+			}
+		} else
+			notlogin.setText("Please Login first from upper right corner.");
+	}
+
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
 	}
 }

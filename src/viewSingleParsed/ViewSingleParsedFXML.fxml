@@ -83,6 +83,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="651.0" layoutY="546.0" mnemonicParsing="false" onAction="#clicknext" prefHeight="21.0" prefWidth="41.0" text="Next" />
+      <Button layoutX="599.0" layoutY="545.0" mnemonicParsing="false" onAction="#clicknext" prefHeight="25.0" prefWidth="60.0" text="Next" />
+      <Button layoutX="672.0" layoutY="545.0" mnemonicParsing="false" onAction="#onExit" prefHeight="25.0" prefWidth="45.0" text="Exit" />
    </children>
 </AnchorPane>

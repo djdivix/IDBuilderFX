@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,7 +45,7 @@ public class ViewMuliParsedController implements Initializable {
 
 	private ObservableList<EmployeeClass> data;
 
-	public void clicknext(ActionEvent event) throws IOException{
+	public void clicknext(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
 		Scene scene = new Scene(root);
@@ -57,7 +56,7 @@ public class ViewMuliParsedController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -75,8 +74,7 @@ public class ViewMuliParsedController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	public void buildData() throws SQLException {
@@ -91,53 +89,107 @@ public class ViewMuliParsedController implements Initializable {
 					rs.getString(6), rs.getString(7), rs.getString(8));
 			data.add(ec);
 		}
-		
-		//Add text wrapping in columns
+
+		// Add text wrapping in columns
+		sex.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(sex.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+
+		dob.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(dob.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		mobile.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(mobile.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		email.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(email.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
 		add.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-	        @Override
-	        public TableCell<EmployeeClass, String> call(
-	                TableColumn<EmployeeClass, String> param) {
-	            TableCell<EmployeeClass, String> cell = new TableCell<>();
-	            Text text = new Text();
-	            cell.setGraphic(text);
-	            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-	            text.wrappingWidthProperty().bind(add.widthProperty());
-	            text.textProperty().bind(cell.itemProperty());
-	            return cell ;
-	        }
-	    });
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(add.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
 		name.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-	        @Override
-	        public TableCell<EmployeeClass, String> call(
-	                TableColumn<EmployeeClass, String> param) {
-	            TableCell<EmployeeClass, String> cell = new TableCell<>();
-	            Text text = new Text();
-	            cell.setGraphic(text);
-	            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-	            text.wrappingWidthProperty().bind(name.widthProperty());
-	            text.textProperty().bind(cell.itemProperty());
-	            return cell ;
-	        }
-	    });
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(name.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
 		fname.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-	        @Override
-	        public TableCell<EmployeeClass, String> call(
-	                TableColumn<EmployeeClass, String> param) {
-	            TableCell<EmployeeClass, String> cell = new TableCell<>();
-	            Text text = new Text();
-	            cell.setGraphic(text);
-	            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-	            text.wrappingWidthProperty().bind(fname.widthProperty());
-	            text.textProperty().bind(cell.itemProperty());
-	            return cell ;
-	        }
-	    });
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(fname.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
 		table.setItems(data);
-		
-		
+
 	}
-	
+
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
+	}
+
 }

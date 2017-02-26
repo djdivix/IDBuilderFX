@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class TemplateController implements Initializable{
+public class TemplateController implements Initializable {
 
 	@FXML
 	private RadioButton temp1;
@@ -33,42 +33,44 @@ public class TemplateController implements Initializable{
 	@FXML
 	ToggleGroup temprb;
 
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			
-			final Image tempImage = new Image(getClass().getResourceAsStream("/images/T1.jpg"));
-			tempimg.setImage(tempImage); 
-			
-			temprb.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
-			    public void changed(ObservableValue<? extends Toggle> ov,
-			        Toggle old_toggle, Toggle new_toggle) {
-			            if (temprb.getSelectedToggle() != null) {
-			            	RadioButton chk = (RadioButton)old_toggle.getToggleGroup().getSelectedToggle();
-			            	System.out.println("Selected Radio Button - "+chk.getText());
-			                final Image image = new Image(
-			                    getClass().getResourceAsStream("/images/"+
-			                        chk.getText().toString() + 
-			                           ".jpg"
-			                     // Cast object to radio button
-			                   // System.out.println("Selected Radio Button - "+chk.getText());
-			                        
-			                    )
-			                );
-			                tempimg.setImage(image);
-			            }                
-			        }
-			});
-		}
-		public void next(ActionEvent event) throws IOException{
-			Stage stage = new Stage();
-			   Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplateFXML.fxml"));
-			   Scene scene = new Scene(root);
-			   scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplateCSS.css").toExternalForm());
-			   stage.setTitle("IDBuilder - Preview Template");
-			   Stage currstage=(Stage) ((Node) event.getSource()).getScene().getWindow();
-		       currstage.close();
-			   stage.setScene(scene);
-			   stage.show();
-		}
-	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		final Image tempImage = new Image(getClass().getResourceAsStream("/images/Valencia.jpg"));
+		tempimg.setImage(tempImage);
+
+		temprb.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+			public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+				if (temprb.getSelectedToggle() != null) {
+					RadioButton chk = (RadioButton) old_toggle.getToggleGroup().getSelectedToggle();
+					System.out.println("Selected Radio Button - " + chk.getText());
+					final Image image = new Image(
+							getClass().getResourceAsStream("/images/" + chk.getText().toString() + ".jpg"
+					// Cast object to radio button
+					// System.out.println("Selected Radio Button -
+					// "+chk.getText());
+
+					));
+					tempimg.setImage(image);
+				}
+			}
+		});
 	}
+
+	public void next(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplateFXML.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplateCSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Preview Template");
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
+	}
+}

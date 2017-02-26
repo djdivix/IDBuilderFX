@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -10,19 +11,23 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="template.TemplateController">
    <children>
-      <Text layoutX="109.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Template for ID Card" textAlignment="CENTER">
+      <Text layoutX="109.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Template for ID Card" textAlignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="427.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload your own template. Coming Soon!" />
-      <RadioButton fx:id="temp1" layoutX="100.0" layoutY="283.0" mnemonicParsing="false" selected="true" text="T1">
+      <Text layoutX="427.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload your own template. Coming Soon!" />
+      <RadioButton fx:id="temp1" layoutX="240.0" layoutY="542.0" mnemonicParsing="false" selected="true" text="Valencia">
          <toggleGroup>
             <ToggleGroup fx:id="temprb" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="temp2" layoutX="100.0" layoutY="344.0" mnemonicParsing="false" text="T2" toggleGroup="$temprb" />
-      <RadioButton fx:id="temp3" layoutX="100.0" layoutY="403.0" mnemonicParsing="false" text="T3" toggleGroup="$temprb" />
-      <ImageView fx:id="tempimg" fitHeight="350.0" fitWidth="350.0" layoutX="227.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="673.0" layoutY="550.0" mnemonicParsing="false" onAction="#next" text="Next" />
+      <RadioButton fx:id="temp2" layoutX="350.0" layoutY="542.0" mnemonicParsing="false" text="Aviator" toggleGroup="$temprb" />
+      <RadioButton fx:id="temp3" layoutX="458.0" layoutY="542.0" mnemonicParsing="false" text="Crema" toggleGroup="$temprb" />
+      <ImageView fx:id="tempimg" fitHeight="400.0" fitWidth="400.0" layoutX="180.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Aviator.jpg" />
+         </image></ImageView>
+      <Button layoutX="621.0" layoutY="551.0" mnemonicParsing="false" onAction="#next" prefHeight="25.0" prefWidth="49.0" text="Next" />
+      <Button layoutX="683.0" layoutY="551.0" mnemonicParsing="false" onAction="#onExit" text="Exit" />
    </children>
 </AnchorPane>

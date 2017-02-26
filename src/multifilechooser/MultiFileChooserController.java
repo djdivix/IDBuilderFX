@@ -25,8 +25,8 @@ public class MultiFileChooserController {
 	private ListView<String> fileslist;
 	@FXML
 	private Label warnlabel;
-	public static List<File> selectedFiles=null;
-	//public static String[] filearr;
+	public static List<File> selectedFiles = null;
+	// public static String[] filearr;
 	public static ArrayList<String> mylist = new ArrayList<String>();
 
 	public void selectmultifiles(ActionEvent event) {
@@ -66,5 +66,10 @@ public class MultiFileChooserController {
 		} else {
 			warnlabel.setText("Choose Valid Files First!");
 		}
+	}
+
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
 	}
 }

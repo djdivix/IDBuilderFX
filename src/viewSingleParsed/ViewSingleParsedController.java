@@ -46,8 +46,8 @@ public class ViewSingleParsedController implements Initializable {
 	private Label fnamelbl;
 	@FXML
 	private AnchorPane ap;
-	
-	public void clicknext(ActionEvent event) throws IOException{
+
+	public void clicknext(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
 		Scene scene = new Scene(root);
@@ -58,47 +58,52 @@ public class ViewSingleParsedController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
-	public void viewSingle() throws SQLException{
-		Connection c ;	
+
+	public void viewSingle() throws SQLException {
+		Connection c;
 		c = database.SqliteConnection.getConnection();
 		String SQL = "SELECT * from Employee";
-	    ResultSet rs = c.createStatement().executeQuery(SQL);
-	    while(rs.next()){
-		namelbl.setText(rs.getString(2));
-		emaillbl.setText(rs.getString(3));
-		moblbl.setText(rs.getString(4));
-		addlbl.setText(rs.getString(5));
-		addlbl.setWrapText(true);
-		doblbl.setText(rs.getString(6));
-		sexlbl.setText(rs.getString(7));
-		fnamelbl.setText(rs.getString(8));
-	    }
+		ResultSet rs = c.createStatement().executeQuery(SQL);
+		while (rs.next()) {
+			namelbl.setText(rs.getString(2));
+			emaillbl.setText(rs.getString(3));
+			moblbl.setText(rs.getString(4));
+			addlbl.setText(rs.getString(5));
+			addlbl.setWrapText(true);
+			doblbl.setText(rs.getString(6));
+			sexlbl.setText(rs.getString(7));
+			fnamelbl.setText(rs.getString(8));
+		}
 	}
 
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ap.sceneProperty().addListener(new ChangeListener<Scene>() {
-			  @Override
-			  public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-			    newValue.windowProperty().addListener(new ChangeListener<Window>() {
-			      @Override
-			      public void changed(ObservableValue<? extends Window> observable, Window oldValue, Window newValue) {
-			        newValue.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-			          @Override
-			          public void handle(WindowEvent event) {
-			            try {
-							viewSingle();
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-			          }
-			        });
-			      }
-			    });
-			  }
-			});
+			@Override
+			public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
+				newValue.windowProperty().addListener(new ChangeListener<Window>() {
+					@Override
+					public void changed(ObservableValue<? extends Window> observable, Window oldValue,
+							Window newValue) {
+						newValue.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
+							@Override
+							public void handle(WindowEvent event) {
+								try {
+									viewSingle();
+								} catch (SQLException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+						});
+					}
+				});
+			}
+		});
+	}
+
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
 	}
 }
