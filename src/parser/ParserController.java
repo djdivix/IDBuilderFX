@@ -2,66 +2,116 @@ package parser;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import filechooser.FileChooserController;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.stage.Stage;
 import multifilechooser.MultiFileChooserController;
-
-public class ParserController {
+public class ParserController implements Initializable {
 	String name1 = "", email1 = "", phone1 = "", address1 = "", dob1 = "", gender1 = "", fatherName1 = "";
-	int empid = 0;
-	public void parsePDF(ActionEvent event) throws IOException, SQLException {
-		Stage stage;
-		Stage currstage;
-		Parent root;
-		Scene scene;
-		File singleFile = null;
-		String text = "";
-		database.DeleteAllEntries.deleteAll();
-		singleFile = FileChooserController.getSelectedFile();
+	static int empid = 0;
+	static int j=0;
+	static int n=0;
+	@FXML
+	private ProgressBar pbar;
+	@FXML
+	private ProgressIndicator pind;
+	@FXML
+	private Button button;
+	@FXML
+	public void handleButton(ActionEvent event){
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		ArrayList<String> multiFiles = MultiFileChooserController.getSelectedFiles();
-		if (multiFiles.isEmpty()) {
-			String singlefilePath = singleFile.getAbsolutePath().replaceAll("/", "//");
-			text = ExtractText.extractPdf(singlefilePath);
-			printoutput(text);
-		ExtractPhoto.findPhoto(singlefilePath,empid);
-			// Open window
-			stage = new Stage();
-			root = FXMLLoader.load(getClass().getResource("/viewSingleParsed/ViewSingleParsedFXML.fxml"));
-			scene = new Scene(root);
-			scene.getStylesheets()
-					.add(getClass().getResource("/viewSingleParsed/ViewSingleParsedCSS.css").toExternalForm());
-			stage.setTitle("IDBuilder - Preview Parsed Data");
-			currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			currstage.close();
-			stage.setScene(scene);
-			stage.show();
-		} else {
-			for (String i : multiFiles) {
-				text = ExtractText.extractPdf(i.replaceAll("/", "//"));
-				printoutput(text);
-				ExtractPhoto.findPhoto(i,empid);
+		button.setDisable(true);
+			Task<Void> task=new Task<Void>() {
+					@Override
+					protected Void call() throws Exception {
+							File singleFile = null;
+							String text = "";
+							database.DeleteAllEntries.deleteAll();
+							singleFile = FileChooserController.getSelectedFile();
+							if (multiFiles.isEmpty()) {
+								j=1;
+								n=1;
+								String singlefilePath = singleFile.getAbsolutePath().replaceAll("/", "//");
+								text = ExtractText.extractPdf(singlefilePath);
+								printoutput(text);
+							ExtractPhoto.findPhoto(singlefilePath,empid);
+							updateProgress(j*1.0,n);
+							Thread.sleep(400);
+							} else {
+								for (String i : multiFiles) {
+									text = ExtractText.extractPdf(i.replaceAll("/", "//"));
+									printoutput(text);
+									j++;
+									n=multiFiles.size();
+									ExtractPhoto.findPhoto(i,empid);
+									updateProgress(j*1.0,n);
+									updateMessage("One"+j);
+									Thread.sleep(100);
+								}
+								Thread.sleep(300);
+							}
+						return null;
+					}
+				};
+		pbar.progressProperty().bind(task.progressProperty());
+		pind.progressProperty().bind(task.progressProperty());
+		task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(final WorkerStateEvent event) {
+				Stage stage = new Stage();
+				Scene scene;
+				Parent root = null;
+				if (multiFiles.isEmpty()) {
+					stage = new Stage();
+					try {
+						root = FXMLLoader.load(getClass().getResource("/viewSingleParsed/ViewSingleParsedFXML.fxml"));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					scene = new Scene(root);
+					scene.getStylesheets().add(getClass().getResource("/viewSingleParsed/ViewSingleParsedCSS.css").toExternalForm());
+					stage.setTitle("IDBuilder - Preview Parsed Data");
+					currstage.close();
+					stage.setScene(scene);
+					stage.show();
+				}
+				else{
+				try {
+					root = FXMLLoader.load(getClass().getResource("/viewMultiParsed/ViewMultiParsedFXML.fxml"));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				scene= new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/viewMultiParsed/ViewMultiParsedCSS.css").toExternalForm());
+				stage.setTitle("IDBuilder - Preview Parsed Data");
+				currstage.close();
+				stage.setScene(scene);
+				stage.show();
+				}
 			}
-			stage = new Stage();
-			root = FXMLLoader.load(getClass().getResource("/viewMultiParsed/ViewMultiParsedFXML.fxml"));
-			scene = new Scene(root);
-			scene.getStylesheets()
-					.add(getClass().getResource("/viewMultiParsed/ViewMultiParsedCSS.css").toExternalForm());
-			stage.setTitle("IDBuilder - Preview Parsed Data");
-			currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			currstage.close();
-			stage.setScene(scene);
-			stage.show();
-		}
-
+		});
+		Thread th=new Thread(task);
+		th.setDaemon(true);
+		th.start();
 	}
-
 	private void printoutput(String text) {
 		// TODO Auto-generated method stub
 	//	System.out.println(text);
@@ -103,5 +153,9 @@ public class ParserController {
 		System.out.println("______________________________________________________________________________________________________________");
 		empid += 1;
 		database.StoreEmployeeDetails.storeDetails(empid, name1, email1, phone1, address1, dob1, gender1, fatherName1);
+	}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 	}
 }

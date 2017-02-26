@@ -14,3 +14,12 @@
 .button:pressed{
 	-fx-background-color: Turquoise;
 }
+.progress-bar > .bar {
+    -fx-background-color: Turquoise ;
+}
+.progress-indicator{
+    -fx-progress-color: Turquoise;
+}
+.progress-indicator .percentage{
+    -fx-fill:green;
+}
