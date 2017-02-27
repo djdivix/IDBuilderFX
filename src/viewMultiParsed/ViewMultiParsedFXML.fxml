@@ -17,7 +17,7 @@
 		<GridPane prefWidth="736.0">
 			<children>
 
-				<TableView fx:id="table" prefHeight="425.0" prefWidth="720.0" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+				<TableView fx:id="table" editable="true" prefHeight="425.0" prefWidth="720.0" GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
 					<columnResizePolicy>
 						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 					</columnResizePolicy>
@@ -37,9 +37,9 @@
 				</TableView>
             <AnchorPane prefHeight="63.0" prefWidth="760.0" GridPane.rowIndex="1">
                <children>
-                  <Button layoutX="693.0" layoutY="19.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" text="Exit" />
+                  <Button layoutX="693.0" layoutY="19.0" mnemonicParsing="false" onAction="#onExit" prefHeight="25.0" prefWidth="46.0" text="Exit" />
                   <Button layoutX="597.0" layoutY="19.0" mnemonicParsing="false" onAction="#clicknext" prefHeight="25.0" prefWidth="60.0" text="Next" />
-                  <Button layoutX="527.0" layoutY="19.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Edit" />
+                  <Button fx:id="edit" layoutX="527.0" layoutY="19.0" mnemonicParsing="false" onAction="#onEdit" prefHeight="25.0" prefWidth="55.0" text="Edit" />
                </children>
             </AnchorPane>
 			</children>
