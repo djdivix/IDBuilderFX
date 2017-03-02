@@ -1,0 +1,18 @@
+.button{
+	-fx-background-color: Aquamarine;
+}
+.button:pressed{
+	-fx-background-color: Turquoise;
+}
+#headtxt {
+    -fx-background-color: transparent;
+}
+#banner {
+	-fx-text-fill: White;
+}
+#namelbl {
+	-fx-text-fill: White;
+}
+#moblbl {
+	-fx-text-fill: White;
+}

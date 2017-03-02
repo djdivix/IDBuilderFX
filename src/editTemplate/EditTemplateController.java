@@ -61,6 +61,7 @@ public class EditTemplateController implements Initializable {
 	@FXML
 	private Label warnlbl;
 	
+	public static String OPFOLDER;
 	private int i=0;
 	private ArrayList<String> name = new ArrayList<String>();
 	private ArrayList<String> email = new ArrayList<String>();
@@ -169,6 +170,7 @@ public class EditTemplateController implements Initializable {
 
 			// TODO: probably use a file chooser here
 			String imgpath = selectedDir.getText();
+			OPFOLDER = imgpath;
 			imgpath = imgpath + "\\" + namelbl.getText() + moblbl.getText() + ".png";
 			File file = new File(imgpath);
 
@@ -188,5 +190,9 @@ public class EditTemplateController implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 		}
+	}
+	public void onExit(ActionEvent event) throws IOException {
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
 	}
 }

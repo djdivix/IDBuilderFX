@@ -59,14 +59,34 @@ public class TemplateController implements Initializable {
 
 	public void next(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplateFXML.fxml"));
+		if(temp2.isSelected()){
+		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplate1FXML.fxml"));
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplateCSS.css").toExternalForm());
-		stage.setTitle("IDBuilder - Preview Template");
+		scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplate1CSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Preview Template - Aviator");
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
 		stage.setScene(scene);
 		stage.show();
+	}else if(temp3.isSelected()){
+		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplate2FXML.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplate2CSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Preview Template - Creme");
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
+		stage.setScene(scene);
+		stage.show();
+	}else{
+		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplateFXML.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/editTemplate/EditTemplateCSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Preview Template - Valencia");
+		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		currstage.close();
+		stage.setScene(scene);
+		stage.show();
+	}
 	}
 
 	public void onExit(ActionEvent event) throws IOException {

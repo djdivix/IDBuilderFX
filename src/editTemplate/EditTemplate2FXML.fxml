@@ -13,78 +13,87 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editTemplate.EditTemplateController">
 	<children>
-		<StackPane fx:id="stkpane" layoutX="137.0" layoutY="145.0" prefHeight="311.0" prefWidth="487.0">
+		<StackPane fx:id="stkpane" layoutX="144.0" layoutY="132.0" prefHeight="307.0" prefWidth="486.0">
 			<children>
-				<ImageView fitHeight="429.0" fitWidth="487.0" pickOnBounds="true" preserveRatio="true">
+				<ImageView fitHeight="307.0" fitWidth="517.0" pickOnBounds="true" preserveRatio="true">
 					<image>
-                  <Image url="@../images/template1.jpg" />
+                  <Image url="@../images/template3.jpg" />
 					</image>
 				</ImageView>
-            <TextField fx:id="headtxt" alignment="CENTER" mouseTransparent="true" text="Enter Name of Organisation">
-               <font>
-                  <Font name="Arial Bold" size="24.0" />
-               </font>
+            <Label fx:id="namelbl" prefHeight="84.0" prefWidth="229.0" text="Label" wrapText="true">
                <StackPane.margin>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="-220.0" />
+                  <Insets right="200.0" top="-220.0" />
                </StackPane.margin>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </TextField>
-            <Label fx:id="namelbl" prefHeight="46.0" prefWidth="129.0" text="Label">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="fnamelbl" prefHeight="17.0" prefWidth="187.0" text="Label">
                <StackPane.margin>
-                  <Insets left="-10.0" top="-55.0" />
+                  <Insets right="-293.0" top="183.0" />
+               </StackPane.margin>
+            </Label>
+            <Label fx:id="sexlbl" prefHeight="17.0" prefWidth="82.0" text="Label">
+               <StackPane.margin>
+                  <Insets left="52.0" top="98.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="moblbl" prefHeight="17.0" prefWidth="229.0" text="Label">
+               <StackPane.margin>
+                  <Insets right="200.0" top="-120.0" />
                </StackPane.margin>
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="photoimg" fitHeight="176.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
-               <StackPane.margin>
-                  <Insets right="305.0" top="45.0" />
-               </StackPane.margin>
-            </ImageView>
-            <Label fx:id="fnamelbl" prefHeight="17.0" prefWidth="217.0" text="Label">
-               <StackPane.margin>
-                  <Insets right="-257.0" top="265.0" />
-               </StackPane.margin>
-            </Label>
-            <Label fx:id="sexlbl" prefHeight="17.0" prefWidth="86.0" text="Label">
-               <StackPane.margin>
-                  <Insets left="396.0" top="132.0" />
-               </StackPane.margin>
-            </Label>
-            <Label fx:id="moblbl" prefHeight="17.0" prefWidth="127.0" text="Label">
-               <StackPane.margin>
-                  <Insets right="-77.0" top="130.0" />
-               </StackPane.margin>
-            </Label>
             <Label fx:id="doblbl" prefHeight="17.0" prefWidth="210.0" text="Label">
                <StackPane.margin>
-                  <Insets left="195.0" top="71.0" />
+                  <Insets left="-75.0" top="30.0" />
                </StackPane.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Label fx:id="emaillbl" prefHeight="17.0" prefWidth="253.0" text="Label">
+            <Label fx:id="emaillbl" prefHeight="17.0" prefWidth="229.0" text="Label">
                <StackPane.margin>
-                  <Insets left="194.0" top="8.0" />
+                  <Insets right="105.0" top="-40.0" />
                </StackPane.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
-            <Label fx:id="addlbl" prefHeight="48.0" prefWidth="250.0" text="Label" wrapText="true">
+            <Label fx:id="addlbl" prefHeight="49.0" prefWidth="224.0" text="Label" wrapText="true">
                <StackPane.margin>
-                  <Insets right="-225.0" top="202.0" />
+                  <Insets right="-258.0" top="250.0" />
                </StackPane.margin>
             </Label>
             <Label fx:id="idatelbl" prefHeight="17.0" prefWidth="92.0" text="Label">
                <StackPane.margin>
-                  <Insets left="205.0" top="-75.0" />
+                  <Insets left="-225.0" top="96.0" />
                </StackPane.margin>
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label prefHeight="0.0" prefWidth="65.0" text="IDBuilderFx">
+            <ImageView fx:id="photoimg" fitHeight="182.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true">
                <StackPane.margin>
-                  <Insets right="400.0" top="290.0" />
+                  <Insets right="-295.0" top="-45.0" />
+               </StackPane.margin>
+            </ImageView>
+            <TextField fx:id="headtxt" alignment="CENTER" maxWidth="200.0" mouseTransparent="true" prefHeight="47.0" prefWidth="417.0" text="Organisation Name">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets right="280.0" top="220.0" />
+               </StackPane.margin>
+            </TextField>
+            <Label fx:id="banner" prefHeight="15.0" prefWidth="54.0" text="IDBuilderFx">
+               <StackPane.margin>
+                  <Insets right="-415.0" top="-290.0" />
                </StackPane.margin>
                <font>
                   <Font size="10.0" />
@@ -92,7 +101,7 @@
             </Label>
 			</children>
 		</StackPane>
-		<Text layoutX="194.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preview Template - Valencia" textAlignment="CENTER" wrappingWidth="391.08984375">
+		<Text layoutX="194.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preview Template - Crema" textAlignment="CENTER" wrappingWidth="391.08984375">
          <font>
             <Font size="30.0" />
          </font></Text>

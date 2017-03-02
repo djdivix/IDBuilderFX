@@ -4,3 +4,6 @@
 .button:pressed{
 	-fx-background-color: Turquoise;
 }
+#headtxt {
+    -fx-background-color: transparent;
+}
