@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +30,7 @@
 						<TableColumn fx:id="dob" prefWidth="100.0" text="DOB" />
 						<TableColumn fx:id="sex" prefWidth="100.0" text="Gender" />
 						<TableColumn fx:id="fname" prefWidth="100.0" text="Father's Name" />
-                  <TableColumn fx:id="photo" prefWidth="100.0" text="Photo" />
+                  <TableColumn fx:id="photo" editable="true" prefWidth="100.0" text="Photo" />
 					</columns>
 					<GridPane.margin>
 						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -40,6 +41,7 @@
                   <Button layoutX="693.0" layoutY="19.0" mnemonicParsing="false" onAction="#onExit" prefHeight="25.0" prefWidth="46.0" text="Exit" />
                   <Button layoutX="597.0" layoutY="19.0" mnemonicParsing="false" onAction="#clicknext" prefHeight="25.0" prefWidth="60.0" text="Next" />
                   <Button fx:id="edit" layoutX="527.0" layoutY="19.0" mnemonicParsing="false" onAction="#onEdit" prefHeight="25.0" prefWidth="55.0" text="Edit" />
+                  <Label fx:id="warnLabel" layoutX="502.0" prefHeight="17.0" prefWidth="214.0" textFill="#e84545" />
                </children>
             </AnchorPane>
 			</children>

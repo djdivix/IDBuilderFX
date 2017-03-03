@@ -1,6 +1,8 @@
 package viewMultiParsed;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class EmployeeClass {
 	private SimpleStringProperty name;
@@ -10,6 +12,7 @@ public class EmployeeClass {
 	private SimpleStringProperty dob;
 	private SimpleStringProperty sex;
 	private SimpleStringProperty fname;
+	private ImageView photo;
 	public String getName() {
 		return name.get();
 	}
@@ -66,7 +69,7 @@ public class EmployeeClass {
 	}
 
 	public EmployeeClass(String name, String email, String mobile, String add, String dob, String sex,
-			String fname) {
+			String fname,ImageView photo) {
 		super();
 		this.name = new SimpleStringProperty(name);
 		this.email = new SimpleStringProperty(email);
@@ -75,5 +78,16 @@ public class EmployeeClass {
 		this.dob = new SimpleStringProperty(dob);
 		this.sex = new SimpleStringProperty(sex);
 		this.fname = new SimpleStringProperty(fname);
+		photo.setFitHeight(100);
+		photo.setFitWidth(100);
+		this.photo=photo;
+	}
+
+	public ImageView getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Image photo) {
+		this.photo.setImage(photo);;
 	}
 }

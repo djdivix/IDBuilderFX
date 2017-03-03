@@ -1,5 +1,9 @@
 package viewMultiParsed;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -8,8 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,17 +27,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ViewMuliParsedController implements Initializable {
+	@FXML
+	private Label warnLabel;
 	@FXML
 	private TableView<EmployeeClass> table;
 	@FXML
@@ -48,12 +61,16 @@ public class ViewMuliParsedController implements Initializable {
 	@FXML
 	private TableColumn<EmployeeClass, String> fname;
 	@FXML
+	private TableColumn<EmployeeClass, ImageView> photo;
+	@FXML
 	private Button edit;
 	private ObservableList<EmployeeClass> data;
 	Connection c;
 	String sex1="";
 	public int empId=1;
 	public void clicknext(ActionEvent event) throws IOException, SQLException {
+		if(edit.getText().equalsIgnoreCase("Edit"))
+		{
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
 		Scene scene = new Scene(root);
@@ -63,6 +80,10 @@ public class ViewMuliParsedController implements Initializable {
 		currstage.close();
 		stage.setScene(scene);
 		stage.show();
+		}
+		else{
+			warnLabel.setText("Please Save First....");
+		}
 	}
 
 	@Override
@@ -74,24 +95,27 @@ public class ViewMuliParsedController implements Initializable {
 		dob.setCellValueFactory(new PropertyValueFactory<EmployeeClass, String>("dob"));
 		sex.setCellValueFactory(new PropertyValueFactory<EmployeeClass, String>("sex"));
 		fname.setCellValueFactory(new PropertyValueFactory<EmployeeClass, String>("fname"));
-
+		photo.setCellValueFactory(new PropertyValueFactory<EmployeeClass, ImageView>("photo"));
 		try {
 			buildData();
-		} catch (SQLException e) {
+		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	public void buildData() throws SQLException {
+	public void buildData() throws SQLException, IOException {
 		data = FXCollections.observableArrayList();
 		c = database.SqliteConnection.getConnection();
 		String SQL = "SELECT * from Employee";
 		ResultSet rs = c.createStatement().executeQuery(SQL);
 
 		while (rs.next()) {
+			byte[] imageInbyte = rs.getBytes(9);
+			BufferedImage img1 = ImageIO.read(new ByteArrayInputStream(imageInbyte));
+			Image image = SwingFXUtils.toFXImage(img1, null);
 			EmployeeClass ec = new EmployeeClass(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7), rs.getString(8));
+					rs.getString(6), rs.getString(7), rs.getString(8),new ImageView(image));
 			data.add(ec);
 		}
 		c.close();
@@ -103,7 +127,7 @@ public class ViewMuliParsedController implements Initializable {
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
 	}
-	public void onEdit(ActionEvent event) throws SQLException{
+	public void onEdit(ActionEvent event) throws SQLException, IOException{
 		wrapText();
 	if(edit.getText().equalsIgnoreCase("Edit"))
 	{
@@ -123,7 +147,7 @@ public class ViewMuliParsedController implements Initializable {
 			        public void handle(CellEditEvent<EmployeeClass, String> t) {
 			            ((EmployeeClass) t.getTableView().getItems().get(
 			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
+			                ).setDob(t.getNewValue());
 			        }
 			    }
 			);
@@ -133,7 +157,7 @@ public class ViewMuliParsedController implements Initializable {
 			        public void handle(CellEditEvent<EmployeeClass, String> t) {
 			            ((EmployeeClass) t.getTableView().getItems().get(
 			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
+			                ).setMobile(t.getNewValue());
 			        }
 			    }
 			);
@@ -143,7 +167,7 @@ public class ViewMuliParsedController implements Initializable {
 			        public void handle(CellEditEvent<EmployeeClass, String> t) {
 			            ((EmployeeClass) t.getTableView().getItems().get(
 			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
+			                ).setEmail(t.getNewValue());
 			        }
 			    }
 			);
@@ -153,7 +177,7 @@ public class ViewMuliParsedController implements Initializable {
 			        public void handle(CellEditEvent<EmployeeClass, String> t) {
 			            ((EmployeeClass) t.getTableView().getItems().get(
 			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
+			                ).setAdd(t.getNewValue());
 			        }
 			    }
 			);
@@ -163,7 +187,7 @@ public class ViewMuliParsedController implements Initializable {
 			        public void handle(CellEditEvent<EmployeeClass, String> t) {
 			            ((EmployeeClass) t.getTableView().getItems().get(
 			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
+			                ).setName(t.getNewValue());
 			        }
 			    }
 			);
@@ -173,10 +197,43 @@ public class ViewMuliParsedController implements Initializable {
 			        public void handle(CellEditEvent<EmployeeClass, String> t) {
 			            ((EmployeeClass) t.getTableView().getItems().get(
 			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
+			                ).setFname(t.getNewValue());
 			        }
 			    }
 			);
+		photo.setCellFactory(tc -> {
+            TableCell<EmployeeClass, ImageView> cell = new TableCell<EmployeeClass, ImageView>() {
+                protected void updateItem(ImageView item, boolean empty) {
+                    super.updateItem(item, empty) ;
+                    setGraphic(item);
+                }
+            };
+            cell.setOnMouseClicked(e -> {
+                if (! cell.isEmpty()&&e.getClickCount()==2) {
+                   System.out.println("Clicked");
+                FileChooser fileChooser = new FileChooser();
+           		fileChooser.setInitialDirectory(new File("C:\\PdfBox_Examples"));
+           		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+           		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+           		FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG Files (*.jpeg)", "*.JPEG");
+           		fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG, extFilterJPEG);
+           		File selectedFile = fileChooser.showOpenDialog(null);
+           		if (selectedFile != null) {
+           			BufferedImage img1 = null;
+					try {
+						img1 = ImageIO.read(new File(selectedFile.getAbsolutePath()));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+           			Image image = SwingFXUtils.toFXImage(img1, null);
+           			tc.getTableView().getItems().get(cell.getIndex()).setPhoto(image);
+                    // do something with id...
+                }
+                }
+            });
+            return cell ;
+        });
 		edit.setText("Save");
 	}
 	else{
@@ -184,7 +241,7 @@ public class ViewMuliParsedController implements Initializable {
 		{
 			c=database.SqliteConnection.getConnection();
 		PreparedStatement pst;
-		String sql="update Employee SET	name=?,email=?,mobileNumber=?,address=?,dateOfBirth=?,gender=?,fatherName=? where empId='"+empId+"'";
+		String sql="update Employee SET	name=?,email=?,mobileNumber=?,address=?,dateOfBirth=?,gender=?,fatherName=?, photo=? where empId='"+empId+"'";
 		empId++;
 		pst=c.prepareStatement(sql);
 		pst.setString(1,cb.getName());
@@ -194,8 +251,15 @@ public class ViewMuliParsedController implements Initializable {
 		pst.setString(5,cb.getDob());
 		pst.setString(6,cb.getSex());
 	    pst.setString(7,cb.getFname());
+	    Image im = cb.getPhoto().getImage();
+		BufferedImage in = SwingFXUtils.fromFXImage(im, null);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(in, "jpeg", baos);
+		byte[] imageInByte = baos.toByteArray();
+		pst.setBytes(8, imageInByte);
 		pst.executeUpdate();
 		}
+		warnLabel.setText("");
 		edit.setText("Edit");
 	}
 	}

@@ -42,6 +42,8 @@ import javafx.event.EventHandler;
  */
 public class ViewSingleParsedController implements Initializable {
 	@FXML
+	private Label warnLabel;
+	@FXML
 	private ImageView photo;
 	@FXML
 	private Button edit;
@@ -79,6 +81,8 @@ public class ViewSingleParsedController implements Initializable {
 	private AnchorPane ap;
 
 	public void clicknext(ActionEvent event) throws IOException {
+		if(edit.getText().equalsIgnoreCase("Edit"))
+		{
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
 		Scene scene = new Scene(root);
@@ -88,6 +92,9 @@ public class ViewSingleParsedController implements Initializable {
 		currstage.close();
 		stage.setScene(scene);
 		stage.show();
+		}
+		else
+			warnLabel.setText("Please Save First....");
 	}
 
 	public void viewSingle() throws SQLException, IOException {
@@ -110,6 +117,7 @@ public class ViewSingleParsedController implements Initializable {
 			photo.setImage(image);
 			photo.setPreserveRatio(true);
 		}
+		c.close();
 	}
 
 	@Override
@@ -169,6 +177,7 @@ public class ViewSingleParsedController implements Initializable {
 			photobutton.setVisible(true);
 			edit.setText("Save");
 		} else {
+			warnLabel.setText("");
 			newname.setVisible(false);
 			namelbl.setText(newname.getText());
 			newemail.setVisible(false);

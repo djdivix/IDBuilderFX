@@ -98,5 +98,6 @@
       <TextArea fx:id="newadd" layoutX="283.0" layoutY="276.0" prefHeight="63.0" prefWidth="316.0" visible="false" />
       <ImageView fx:id="photo" fitHeight="155.0" fitWidth="149.0" layoutX="595.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="photobutton" layoutX="637.0" layoutY="276.0" mnemonicParsing="false" onAction="#changePhoto" prefHeight="25.0" prefWidth="70.0" text="Browse" visible="false" />
+      <Label fx:id="warnLabel" layoutX="504.0" layoutY="512.0" prefHeight="17.0" prefWidth="202.0" textFill="#e51919" />
    </children>
 </AnchorPane>
