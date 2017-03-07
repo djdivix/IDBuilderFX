@@ -39,9 +39,13 @@
             <AnchorPane prefHeight="63.0" prefWidth="760.0" GridPane.rowIndex="1">
                <children>
                   <Button layoutX="693.0" layoutY="19.0" mnemonicParsing="false" onAction="#onExit" prefHeight="25.0" prefWidth="46.0" text="Exit" />
-                  <Button layoutX="597.0" layoutY="19.0" mnemonicParsing="false" onAction="#clicknext" prefHeight="25.0" prefWidth="60.0" text="Next" />
-                  <Button fx:id="edit" layoutX="527.0" layoutY="19.0" mnemonicParsing="false" onAction="#onEdit" prefHeight="25.0" prefWidth="55.0" text="Edit" />
-                  <Label fx:id="warnLabel" layoutX="502.0" prefHeight="17.0" prefWidth="214.0" textFill="#e84545" />
+                  <Button layoutX="615.0" layoutY="19.0" mnemonicParsing="false" onAction="#clicknext" prefHeight="25.0" prefWidth="60.0" text="Next" />
+                  <Button fx:id="edit" layoutX="542.0" layoutY="19.0" mnemonicParsing="false" onAction="#onEdit" prefHeight="25.0" prefWidth="55.0" text="Edit" />
+                  <Label fx:id="warnLabel" layoutX="523.0" layoutY="1.0" prefHeight="17.0" prefWidth="214.0" textFill="#e84545" />
+                  <Label fx:id="lbl2" layoutX="90.0" layoutY="2.0" prefHeight="19.0" prefWidth="393.0" text="For Updating info, Double Click on the cell, Edit Info and Press Enter." visible="false" wrapText="true" />
+                  <Label fx:id="lbl3" layoutX="90.0" layoutY="20.0" prefHeight="19.0" prefWidth="451.0" text="For Updating photo, Double click on the corresponding photo and select new photo." visible="false" />
+                  <Label fx:id="lbl4" layoutX="90.0" layoutY="38.0" text="Click on Save when finished Editing." visible="false" />
+                  <Label fx:id="lbl1" layoutX="21.0" layoutY="2.0" text="Instructions:" visible="false" />
                </children>
             </AnchorPane>
 			</children>

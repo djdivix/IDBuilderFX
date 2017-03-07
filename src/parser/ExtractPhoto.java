@@ -28,9 +28,7 @@ public class ExtractPhoto {
 			{
 				PDXObject pdxObject=pdResources.getXObject(cosName);
 				 if (pdxObject instanceof PDImageXObject) {			//check that the resource is image
-		                File file1 = new File("C:/PDFcopy/" + System.nanoTime() + ".jpeg");
 		                BufferedImage br=((PDImageXObject) pdxObject).getImage();
-		                ImageIO.write(br, "jpeg", file1);
 		                database.StorePhoto.storePhoto(empId,br);
 		                imageFound=1;
 		                break;

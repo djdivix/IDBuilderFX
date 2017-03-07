@@ -43,6 +43,14 @@ import javafx.util.Callback;
 
 public class ViewMuliParsedController implements Initializable {
 	@FXML
+	private Label lbl1;
+	@FXML
+	private Label lbl2;
+	@FXML
+	private Label lbl3;
+	@FXML
+	private Label lbl4;
+	@FXML
 	private Label warnLabel;
 	@FXML
 	private TableView<EmployeeClass> table;
@@ -66,22 +74,21 @@ public class ViewMuliParsedController implements Initializable {
 	private Button edit;
 	private ObservableList<EmployeeClass> data;
 	Connection c;
-	String sex1="";
-	public int empId=1;
+	String sex1 = "";
+	public int empId = 1;
+
 	public void clicknext(ActionEvent event) throws IOException, SQLException {
-		if(edit.getText().equalsIgnoreCase("Edit"))
-		{
-		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("/template/templateCSS.css").toExternalForm());
-		stage.setTitle("IDBuilderFX - Select Template");
-		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		currstage.close();
-		stage.setScene(scene);
-		stage.show();
-		}
-		else{
+		if (edit.getText().equalsIgnoreCase("Edit")) {
+			Stage stage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/template/templateCSS.css").toExternalForm());
+			stage.setTitle("IDBuilderFX - Select Template");
+			Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			currstage.close();
+			stage.setScene(scene);
+			stage.show();
+		} else {
 			warnLabel.setText("Please Save First....");
 		}
 	}
@@ -104,6 +111,7 @@ public class ViewMuliParsedController implements Initializable {
 		}
 
 	}
+
 	public void buildData() throws SQLException, IOException {
 		data = FXCollections.observableArrayList();
 		c = database.SqliteConnection.getConnection();
@@ -115,7 +123,7 @@ public class ViewMuliParsedController implements Initializable {
 			BufferedImage img1 = ImageIO.read(new ByteArrayInputStream(imageInbyte));
 			Image image = SwingFXUtils.toFXImage(img1, null);
 			EmployeeClass ec = new EmployeeClass(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7), rs.getString(8),new ImageView(image));
+					rs.getString(6), rs.getString(7), rs.getString(8), new ImageView(image));
 			data.add(ec);
 		}
 		c.close();
@@ -123,239 +131,231 @@ public class ViewMuliParsedController implements Initializable {
 		wrapText();
 		table.setItems(data);
 	}
+
 	public void onExit(ActionEvent event) throws IOException {
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
 	}
-	public void onEdit(ActionEvent event) throws SQLException, IOException{
+
+	public void onEdit(ActionEvent event) throws SQLException, IOException {
 		wrapText();
-	if(edit.getText().equalsIgnoreCase("Edit"))
-	{
-		sex.setCellFactory(TextFieldTableCell.forTableColumn());
-		sex.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setSex(t.getNewValue());
-			        }
-			    }
-			);
-		dob.setCellFactory(TextFieldTableCell.forTableColumn());
-		dob.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setDob(t.getNewValue());
-			        }
-			    }
-			);
-		mobile.setCellFactory(TextFieldTableCell.forTableColumn());
-		mobile.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setMobile(t.getNewValue());
-			        }
-			    }
-			);
-		email.setCellFactory(TextFieldTableCell.forTableColumn());
-		email.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setEmail(t.getNewValue());
-			        }
-			    }
-			);
-		add.setCellFactory(TextFieldTableCell.forTableColumn());
-		add.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setAdd(t.getNewValue());
-			        }
-			    }
-			);
-		name.setCellFactory(TextFieldTableCell.forTableColumn());
-		name.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setName(t.getNewValue());
-			        }
-			    }
-			);
-		fname.setCellFactory(TextFieldTableCell.forTableColumn());
-		fname.setOnEditCommit(
-			    new EventHandler<CellEditEvent<EmployeeClass, String>>() {
-			        public void handle(CellEditEvent<EmployeeClass, String> t) {
-			            ((EmployeeClass) t.getTableView().getItems().get(
-			                t.getTablePosition().getRow())
-			                ).setFname(t.getNewValue());
-			        }
-			    }
-			);
-		photo.setCellFactory(tc -> {
-            TableCell<EmployeeClass, ImageView> cell = new TableCell<EmployeeClass, ImageView>() {
-                protected void updateItem(ImageView item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    setGraphic(item);
-                }
-            };
-            cell.setOnMouseClicked(e -> {
-                if (! cell.isEmpty()&&e.getClickCount()==2) {
-                   System.out.println("Clicked");
-                FileChooser fileChooser = new FileChooser();
-           		fileChooser.setInitialDirectory(new File("C:\\PdfBox_Examples"));
-           		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-           		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-           		FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG Files (*.jpeg)", "*.JPEG");
-           		fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG, extFilterJPEG);
-           		File selectedFile = fileChooser.showOpenDialog(null);
-           		if (selectedFile != null) {
-           			BufferedImage img1 = null;
-					try {
-						img1 = ImageIO.read(new File(selectedFile.getAbsolutePath()));
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+		if (edit.getText().equalsIgnoreCase("Edit")) {
+			lbl1.setVisible(true);
+			lbl2.setVisible(true);
+			lbl3.setVisible(true);
+			lbl4.setVisible(true);
+			sex.setCellFactory(TextFieldTableCell.forTableColumn());
+			sex.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setSex(t.getNewValue());
+				}
+			});
+			dob.setCellFactory(TextFieldTableCell.forTableColumn());
+			dob.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setDob(t.getNewValue());
+				}
+			});
+			mobile.setCellFactory(TextFieldTableCell.forTableColumn());
+			mobile.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setMobile(t.getNewValue());
+				}
+			});
+			email.setCellFactory(TextFieldTableCell.forTableColumn());
+			email.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setEmail(t.getNewValue());
+				}
+			});
+			add.setCellFactory(TextFieldTableCell.forTableColumn());
+			add.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setAdd(t.getNewValue());
+				}
+			});
+			name.setCellFactory(TextFieldTableCell.forTableColumn());
+			name.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setName(t.getNewValue());
+				}
+			});
+			fname.setCellFactory(TextFieldTableCell.forTableColumn());
+			fname.setOnEditCommit(new EventHandler<CellEditEvent<EmployeeClass, String>>() {
+				public void handle(CellEditEvent<EmployeeClass, String> t) {
+					((EmployeeClass) t.getTableView().getItems().get(t.getTablePosition().getRow()))
+							.setFname(t.getNewValue());
+				}
+			});
+			photo.setCellFactory(tc -> {
+				TableCell<EmployeeClass, ImageView> cell = new TableCell<EmployeeClass, ImageView>() {
+					protected void updateItem(ImageView item, boolean empty) {
+						super.updateItem(item, empty);
+						setGraphic(item);
 					}
-           			Image image = SwingFXUtils.toFXImage(img1, null);
-           			tc.getTableView().getItems().get(cell.getIndex()).setPhoto(image);
-                    // do something with id...
-                }
-                }
-            });
-            return cell ;
-        });
-		edit.setText("Save");
-	}
-	else{
-		for(EmployeeClass cb:data)
-		{
-			c=database.SqliteConnection.getConnection();
-		PreparedStatement pst;
-		String sql="update Employee SET	name=?,email=?,mobileNumber=?,address=?,dateOfBirth=?,gender=?,fatherName=?, photo=? where empId='"+empId+"'";
-		empId++;
-		pst=c.prepareStatement(sql);
-		pst.setString(1,cb.getName());
-		pst.setString(2,cb.getEmail());
-		pst.setString(3,cb.getMobile());
-		pst.setString(4,cb.getAdd());
-		pst.setString(5,cb.getDob());
-		pst.setString(6,cb.getSex());
-	    pst.setString(7,cb.getFname());
-	    Image im = cb.getPhoto().getImage();
-		BufferedImage in = SwingFXUtils.fromFXImage(im, null);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(in, "jpeg", baos);
-		byte[] imageInByte = baos.toByteArray();
-		pst.setBytes(8, imageInByte);
-		pst.executeUpdate();
+				};
+				cell.setOnMouseClicked(e -> {
+					if (!cell.isEmpty() && e.getClickCount() == 2) {
+						System.out.println("Clicked");
+						FileChooser fileChooser = new FileChooser();
+						// fileChooser.setInitialDirectory(new
+						// File("C:\\PdfBox_Examples"));
+						FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)",
+								"*.JPG");
+						FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)",
+								"*.PNG");
+						FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter(
+								"JPEG Files (*.jpeg)", "*.JPEG");
+						fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG, extFilterJPEG);
+						File selectedFile = fileChooser.showOpenDialog(null);
+						if (selectedFile != null) {
+							BufferedImage img1 = null;
+							try {
+								img1 = ImageIO.read(new File(selectedFile.getAbsolutePath()));
+							} catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							Image image = SwingFXUtils.toFXImage(img1, null);
+							tc.getTableView().getItems().get(cell.getIndex()).setPhoto(image);
+							// do something with id...
+						}
+					}
+				});
+				return cell;
+			});
+			edit.setText("Save");
+		} else {
+			lbl1.setVisible(false);
+			lbl2.setVisible(false);
+			lbl3.setVisible(false);
+			lbl4.setVisible(false);
+			for (EmployeeClass cb : data) {
+				c = database.SqliteConnection.getConnection();
+				PreparedStatement pst;
+				String sql = "update Employee SET	name=?,email=?,mobileNumber=?,address=?,dateOfBirth=?,gender=?,fatherName=?, photo=? where empId='"
+						+ empId + "'";
+				empId++;
+				pst = c.prepareStatement(sql);
+				pst.setString(1, cb.getName());
+				pst.setString(2, cb.getEmail());
+				pst.setString(3, cb.getMobile());
+				pst.setString(4, cb.getAdd());
+				pst.setString(5, cb.getDob());
+				pst.setString(6, cb.getSex());
+				pst.setString(7, cb.getFname());
+				Image im = cb.getPhoto().getImage();
+				BufferedImage in = SwingFXUtils.fromFXImage(im, null);
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(in, "jpeg", baos);
+				byte[] imageInByte = baos.toByteArray();
+				pst.setBytes(8, imageInByte);
+				pst.executeUpdate();
+			}
+			warnLabel.setText("");
+			edit.setText("Edit");
 		}
-		warnLabel.setText("");
-		edit.setText("Edit");
 	}
-	}
-	public void wrapText(){
+
+	public void wrapText() {
 		// Add text wrapping in columns
-				sex.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+		sex.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(sex.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
-				dob.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(sex.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		dob.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(dob.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
-				mobile.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(dob.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		mobile.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(mobile.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
-				email.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(mobile.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		email.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(email.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
-				add.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(email.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		add.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(add.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
-				name.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(add.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		name.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(name.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
-				fname.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(name.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
+		fname.setCellFactory(new Callback<TableColumn<EmployeeClass, String>, TableCell<EmployeeClass, String>>() {
 
-					@Override
-					public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
-						TableCell<EmployeeClass, String> cell = new TableCell<>();
-						Text text = new Text();
-						cell.setGraphic(text);
-						cell.startEdit();
-						cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-						text.wrappingWidthProperty().bind(fname.widthProperty());
-						text.textProperty().bind(cell.itemProperty());
-						return cell;
-					}
-				});
+			@Override
+			public TableCell<EmployeeClass, String> call(TableColumn<EmployeeClass, String> param) {
+				TableCell<EmployeeClass, String> cell = new TableCell<>();
+				Text text = new Text();
+				cell.setGraphic(text);
+				cell.startEdit();
+				cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+				text.wrappingWidthProperty().bind(fname.widthProperty());
+				text.textProperty().bind(cell.itemProperty());
+				return cell;
+			}
+		});
 	}
 }

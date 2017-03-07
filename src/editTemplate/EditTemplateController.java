@@ -1,4 +1,4 @@
-package editTemplate;
+	package editTemplate;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -89,31 +89,32 @@ public class EditTemplateController implements Initializable {
 		}
 		try {
 			while (rs.next()) {
-				name.add(rs.getString(2));
-				email.add(rs.getString(3));
-				mob.add(rs.getString(4));
-				address.add(rs.getString(5));
-				dob.add(rs.getString(6));
-				sex.add(rs.getString(7));
-				fname.add(rs.getString(8));
+				name.add(rs.getString(2).equals("NOT FOUND")?" ":rs.getString(2));
+				email.add(rs.getString(3).equals("NOT FOUND")?" ":rs.getString(3));
+				mob.add(rs.getString(4).equals("NOT FOUND")?" ":rs.getString(4));
+				address.add(rs.getString(5).equals("NOT FOUND")?" ":rs.getString(5));
+				dob.add(rs.getString(6).equals("NOT FOUND")?" ":rs.getString(6));
+				sex.add(rs.getString(7).equals("NOT FOUND")?" ":rs.getString(7));
+				fname.add(rs.getString(8).equals("NOT FOUND")?" ":rs.getString(8));
 				byte[] imageInbyte = rs.getBytes(9);
 				img1[i] = ImageIO.read(new ByteArrayInputStream(imageInbyte));
-				i++;
 				
-				namelbl.setText(rs.getString(2));
+				
+				namelbl.setText(name.get(i));
 				namelbl.setWrapText(true);
 				idatelbl.setText(df.format(dateobj));
-				emaillbl.setText(rs.getString(3));
-				moblbl.setText(rs.getString(4));
-				addlbl.setText(rs.getString(5));
+				emaillbl.setText(email.get(i));
+				moblbl.setText(mob.get(i));
+				addlbl.setText(address.get(i));
 				// addlbl.setPrefSize(250, 500);
 				addlbl.setWrapText(true);
 				doblbl.setText(rs.getString(6));
-				sexlbl.setText(rs.getString(7));
-				fnamelbl.setText(rs.getString(8));
+				sexlbl.setText(sex.get(i));
+				fnamelbl.setText(fname.get(i));
 				BufferedImage img1 = ImageIO.read(new ByteArrayInputStream(imageInbyte));
 				Image image = SwingFXUtils.toFXImage(img1, null);
 				photoimg.setImage(image);
+				i++;
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
