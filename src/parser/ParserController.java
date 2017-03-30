@@ -50,7 +50,15 @@ public class ParserController implements Initializable {
 								String singlefilePath = singleFile.getAbsolutePath().replaceAll("/", "//");
 								text = ExtractText.extractPdf(singlefilePath);
 								printoutput(text);
-							ExtractPhoto.findPhoto(singlefilePath,empid);
+							try {
+								ExtractPhoto.findPhoto(singlefilePath,empid);
+							} catch (Error e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (jjil.core.Error e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							updateProgress(j*1.0,n);
 							Thread.sleep(400);
 							} else {
@@ -59,7 +67,15 @@ public class ParserController implements Initializable {
 									printoutput(text);
 									j++;
 									n=multiFiles.size();
-									ExtractPhoto.findPhoto(i,empid);
+									try {
+										ExtractPhoto.findPhoto(i,empid);
+									} catch (Error e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (jjil.core.Error e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 									updateProgress(j*1.0,n);
 									updateMessage("One"+j);
 									Thread.sleep(100);

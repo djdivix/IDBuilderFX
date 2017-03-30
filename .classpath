@@ -14,6 +14,7 @@
 	<classpathentry kind="lib" path="lib/preflight-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/preflight-app-2.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/xmpbox-2.0.4.jar"/>
-	<classpathentry kind="lib" path="lib/opencv-320.jar"/>
+	<classpathentry kind="lib" path="lib/JJIL-J2SE.jar"/>
+	<classpathentry kind="lib" path="lib/JJILCore.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
