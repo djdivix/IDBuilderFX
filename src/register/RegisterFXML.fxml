@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="470.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="register.RegisterController">
+   <children>
+      <Text layoutX="160.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="123.0" layoutY="389.0" mnemonicParsing="false" onAction="#confRegister" text="Register" />
+      <Button layoutX="222.0" layoutY="390.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <TextField fx:id="nametxt" layoutX="66.0" layoutY="122.0" prefHeight="25.0" prefWidth="278.0" promptText="NAME">
+         <tooltip>
+            <Tooltip text="eg. John Doe">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <TextField fx:id="emailtxt" layoutX="66.0" layoutY="170.0" prefHeight="25.0" prefWidth="278.0" promptText="EMAIL">
+         <tooltip>
+            <Tooltip text="eg. example@xyz.com">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <TextField fx:id="usertxt" layoutX="66.0" layoutY="217.0" prefHeight="25.0" prefWidth="278.0" promptText="USERNAME">
+         <tooltip>
+            <Tooltip text="eg. user_xyz12">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Tooltip>
+         </tooltip></TextField>
+      <Label fx:id="errlbl" layoutX="65.0" layoutY="357.0" prefHeight="17.0" prefWidth="310.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+      <PasswordField fx:id="passtxt1" layoutX="65.0" layoutY="265.0" prefHeight="25.0" prefWidth="278.0" promptText="PASSWORD">
+         <tooltip>
+            <Tooltip text="Passwords must contain at least 6 characters, including uppercase, lowercase letters and numbers.">
+               <font>
+                  <Font size="13.0" />
+               </font></Tooltip>
+         </tooltip></PasswordField>
+      <PasswordField fx:id="passtxt2" layoutX="65.0" layoutY="313.0" prefHeight="25.0" prefWidth="278.0" promptText="CONFIRM PASSWORD" />
+   </children>
+</AnchorPane>

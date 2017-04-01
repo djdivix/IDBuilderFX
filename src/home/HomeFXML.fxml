@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.HomeController">
    <children>
       <Button layoutX="668.0" layoutY="542.0" mnemonicParsing="false" onAction="#onExit" prefHeight="25.0" prefWidth="60.0" text="Exit" />
-      <Button layoutX="715.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0">
+      <Button layoutX="715.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHelp" prefHeight="25.0" prefWidth="27.0">
       <graphic>
       <ImageView fitHeight="18.0" fitWidth="18.0">
       <image>
@@ -37,12 +37,15 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Text layoutX="214.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select one of the following Option and Click Next to continue." wrappingWidth="368.373046875" />
-      <RadioButton fx:id="singleResume" layoutX="235.0" layoutY="398.0" mnemonicParsing="false" onAction="#radioSelect" text="Single Resume">
+      <Text layoutX="187.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select one of the following Option and Click Next to continue." wrappingWidth="385.373046875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <RadioButton fx:id="singleResume" layoutX="237.0" layoutY="396.0" mnemonicParsing="false" onAction="#radioSelect" text="Single Resume">
          <toggleGroup>
             <ToggleGroup fx:id="choice_rbtn" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="multipleResumes" layoutX="417.0" layoutY="398.0" mnemonicParsing="false" onAction="#radioSelect" text="Muliple Resumes" toggleGroup="$choice_rbtn" />
+      <RadioButton fx:id="multipleResumes" layoutX="404.0" layoutY="396.0" mnemonicParsing="false" onAction="#radioSelect" text="Muliple Resumes" toggleGroup="$choice_rbtn" />
       <Button layoutX="583.0" layoutY="542.0" mnemonicParsing="false" onAction="#nextbtn" prefHeight="25.0" prefWidth="59.0" text="Next" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="305.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -51,7 +54,7 @@
       </ImageView>
       <Text layoutX="387.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DiViXTech's™" />
       <Text layoutX="14.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Mohammed Habeeb Divyanshu Vishwakarma Ayushi Kakkar" />
-      <Label fx:id="welcome" layoutX="407.0" layoutY="14.0" prefHeight="27.0" prefWidth="183.0" textAlignment="RIGHT" textFill="#23bf35">
+      <Label fx:id="welcome" layoutX="22.0" layoutY="13.0" prefHeight="27.0" prefWidth="438.0" textAlignment="RIGHT" textFill="#35a140">
          <font>
             <Font size="18.0" />
          </font>
@@ -63,5 +66,7 @@
             <Font name="System Italic" size="48.0" />
          </font>
       </Text>
+      <Button fx:id="registerbtn" layoutX="520.0" layoutY="15.0" mnemonicParsing="false" onAction="#onRegister" text="Register" />
+      <Label fx:id="reglbl" layoutX="478.0" layoutY="50.0" prefHeight="17.0" prefWidth="272.0" textFill="#339442" wrapText="true" />
    </children>
 </AnchorPane>

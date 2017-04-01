@@ -30,9 +30,9 @@ public class LoginController {
 		Stage stage;
 		int flag = 0;
 		while (rs.next()) {
-			if (userid.getText().equals(rs.getString(2)) && password.getText().equals(rs.getString(3))) {
+			if (userid.getText().equals(rs.getString(1)) && password.getText().equals(rs.getString(2))) {
 				flag = 1;
-				user = rs.getString(2);
+				user = rs.getString(3);
 				c.close();
 				statuslbl.setText("Logged In Succesfully");
 				stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

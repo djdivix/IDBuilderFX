@@ -24,15 +24,36 @@ public class HomeController {
 	@FXML
 	private Button login1;
 	@FXML
+	private Button registerbtn;
+	@FXML
 	private Label welcome;
 	@FXML
 	private Label notlogin;
+	@FXML
+	private Label reglbl;
 	Stage currstage;
 	Stage stage;
 	Parent root;
 	Scene scene;
+	
+	public void onRegister(ActionEvent event) throws IOException {
+		stage = new Stage();
+		root = FXMLLoader.load(getClass().getResource("/register/RegisterFXML.fxml"));
+		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/register/RegisterCSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Register");
+		stage.setScene(scene);
 
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.showAndWait();
+		if (register.RegisterController.REGISTERED==1) {
+			reglbl.setText("Successfully Registered. Please Log in to continue");
+			registerbtn.setVisible(false);
+		}
+	}
+	
 	public void loginbutton(ActionEvent event) throws IOException {
+		reglbl.setText("");
 		if (login1.getText().equalsIgnoreCase("LogIn")) {
 			notlogin.setText("");
 			stage = new Stage();
@@ -43,16 +64,17 @@ public class HomeController {
 			stage.setScene(scene);
 
 			stage.initModality(Modality.APPLICATION_MODAL);
-			// stage.initOwner(loginbtn.getScene().getWindow());
 			stage.showAndWait();
 			if (!login.LoginController.userName().equals("")) {
 				welcome.setText("Welcome, " + login.LoginController.userName());
 				login1.setText("LogOut");
+				registerbtn.setVisible(false);
 			}
 		} else if (login1.getText().equalsIgnoreCase("LogOut")) {
 			login.LoginController.delete();
 			login1.setText("LogIn");
 			welcome.setText("");
+			registerbtn.setVisible(true);
 		}
 	}
 
@@ -94,7 +116,21 @@ public class HomeController {
 		} else
 			notlogin.setText("Please Login first from upper right corner.");
 	}
+	
+	public void onHelp(ActionEvent event) throws IOException
+	{
+		stage = new Stage();
+		root = FXMLLoader.load(getClass().getResource("/help/HelpFXML.fxml"));
+		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("/help/HelpCSS.css").toExternalForm());
+		stage.setTitle("IDBuilder - Help");
+		stage.setScene(scene);
 
+		stage.initModality(Modality.APPLICATION_MODAL);
+		// stage.initOwner(loginbtn.getScene().getWindow());
+		stage.showAndWait();
+	}
+	
 	public void onExit(ActionEvent event) throws IOException {
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
