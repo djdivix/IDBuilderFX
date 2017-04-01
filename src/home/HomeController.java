@@ -37,6 +37,7 @@ public class HomeController {
 	Scene scene;
 	
 	public void onRegister(ActionEvent event) throws IOException {
+		reglbl.setText("");
 		stage = new Stage();
 		root = FXMLLoader.load(getClass().getResource("/register/RegisterFXML.fxml"));
 		scene = new Scene(root);
@@ -48,12 +49,10 @@ public class HomeController {
 		stage.showAndWait();
 		if (register.RegisterController.REGISTERED==1) {
 			reglbl.setText("Successfully Registered. Please Log in to continue");
-			registerbtn.setVisible(false);
 		}
 	}
 	
 	public void loginbutton(ActionEvent event) throws IOException {
-		reglbl.setText("");
 		if (login1.getText().equalsIgnoreCase("LogIn")) {
 			notlogin.setText("");
 			stage = new Stage();
@@ -68,6 +67,7 @@ public class HomeController {
 			if (!login.LoginController.userName().equals("")) {
 				welcome.setText("Welcome, " + login.LoginController.userName());
 				login1.setText("LogOut");
+				reglbl.setText("");
 				registerbtn.setVisible(false);
 			}
 		} else if (login1.getText().equalsIgnoreCase("LogOut")) {

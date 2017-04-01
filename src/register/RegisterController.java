@@ -37,11 +37,6 @@ public class RegisterController {
 		emailtxt.getStyleClass().remove("error");
 		passtxt1.getStyleClass().remove("error");
 		passtxt2.getStyleClass().remove("error");
-		
-		Connection c=null;
-		c = database.SqliteConnection.getConnection();
-		String SQL = "SELECT * from Users";
-		ResultSet rs = c.createStatement().executeQuery(SQL);
 		//Name validation
 		if (nametxt.getText().equals("")) {
 			errlbl.setText("Name cannot be empty!");
@@ -82,25 +77,7 @@ public class RegisterController {
 	    	usertxt.getStyleClass().add("error");
 	      return;
 	    }
-	    //Check Unique username and email
-	    while(rs.next())
-	    {
-	    	if(emailtxt.getText().equals(rs.getString(4)))
-	    	{
-	    		errlbl.setText("This E-mail is already registered. Enter another E-mail.");
-	    		emailtxt.getStyleClass().add("error");
-	    		c.close();
-	    		return;
-	    	}
-	    	if(usertxt.getText().equals(rs.getString(1)))
-	    	{
-	    		errlbl.setText("Username is already taken. Please try another one.");
-	    		usertxt.getStyleClass().add("error");
-	    		c.close();
-	    		return;
-	    	}
-	    }
-		//Password Validation
+	   		//Password Validation
 		if (passtxt1.getText().equals("")) {
 			errlbl.setText("Password cannot be empty!");
 			passtxt1.getStyleClass().add("error");
@@ -148,6 +125,28 @@ public class RegisterController {
 			passtxt2.getStyleClass().add("error");
 			return;
 		}
+		Connection c=null;
+		c = database.SqliteConnection.getConnection();
+		String SQL = "SELECT * from Users";
+		ResultSet rs = c.createStatement().executeQuery(SQL);
+		 //Check Unique username and email
+	    while(rs.next())
+	    {
+	    	if(emailtxt.getText().equals(rs.getString(4)))
+	    	{
+	    		errlbl.setText("This E-mail is already registered. Enter another E-mail.");
+	    		emailtxt.getStyleClass().add("error");
+	    		c.close();
+	    		return;
+	    	}
+	    	if(usertxt.getText().equals(rs.getString(1)))
+	    	{
+	    		errlbl.setText("Username is already taken. Please try another one.");
+	    		usertxt.getStyleClass().add("error");
+	    		c.close();
+	    		return;
+	    	}
+	    }
 		database.StoreUserDetails.storeDetails(usertxt.getText(), passtxt1.getText() , nametxt.getText(), emailtxt.getText());
 		c.close();
 		REGISTERED=1;
