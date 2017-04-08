@@ -106,6 +106,7 @@ public class ParserController implements Initializable {
 					stage.setTitle("IDBuilder - Preview Parsed Data");
 					currstage.close();
 					stage.setScene(scene);
+					stage.resizableProperty().setValue(Boolean.FALSE);
 					stage.show();
 				}
 				else{
@@ -116,7 +117,7 @@ public class ParserController implements Initializable {
 					e.printStackTrace();
 				}
 				scene= new Scene(root);
-				scene.getStylesheets().add(getClass().getResource("/viewMultiParsed/ViewMultiParsedCSS.css").toExternalForm());
+				scene.getStylesheets().add(getClass().getResource("/viewMultiParsed/viewMultiParsedCSS.css").toExternalForm());
 				stage.setTitle("IDBuilder - Preview Parsed Data");
 				currstage.close();
 				stage.setScene(scene);

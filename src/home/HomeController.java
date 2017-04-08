@@ -44,7 +44,7 @@ public class HomeController {
 		scene.getStylesheets().add(getClass().getResource("/register/RegisterCSS.css").toExternalForm());
 		stage.setTitle("IDBuilder - Register");
 		stage.setScene(scene);
-
+		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
 		if (register.RegisterController.REGISTERED==1) {
@@ -61,7 +61,7 @@ public class HomeController {
 			scene.getStylesheets().add(getClass().getResource("/login/LoginCSS.css").toExternalForm());
 			stage.setTitle("IDBuilder - Login PopUp Window");
 			stage.setScene(scene);
-
+			stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.showAndWait();
 			if (!login.LoginController.userName().equals("")) {
@@ -99,6 +99,7 @@ public class HomeController {
 				currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				currstage.close();
 				stage.setScene(scene);
+				stage.resizableProperty().setValue(Boolean.FALSE);
 				stage.show();
 			} else if (CHOICE == 2) {
 				root = FXMLLoader.load(getClass().getResource("/multifilechooser/MultifilechooserFXML.fxml"));
@@ -109,6 +110,7 @@ public class HomeController {
 				currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				currstage.close();
 				stage.setScene(scene);
+				stage.resizableProperty().setValue(Boolean.FALSE);
 				stage.show();
 			} else {
 				notlogin.setText("Please select Single or Multiple Resume.");
@@ -125,7 +127,7 @@ public class HomeController {
 		scene.getStylesheets().add(getClass().getResource("/help/HelpCSS.css").toExternalForm());
 		stage.setTitle("IDBuilder - Help");
 		stage.setScene(scene);
-
+		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.initModality(Modality.APPLICATION_MODAL);
 		// stage.initOwner(loginbtn.getScene().getWindow());
 		stage.showAndWait();

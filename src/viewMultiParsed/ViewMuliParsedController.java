@@ -80,13 +80,14 @@ public class ViewMuliParsedController implements Initializable {
 	public void clicknext(ActionEvent event) throws IOException, SQLException {
 		if (edit.getText().equalsIgnoreCase("Edit")) {
 			Stage stage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("/template/templateFXML.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/template/TemplateFXML.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/template/templateCSS.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/template/TemplateCSS.css").toExternalForm());
 			stage.setTitle("IDBuilderFX - Select Template");
 			Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			currstage.close();
 			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.show();
 		} else {
 			warnLabel.setText("Please Save First....");

@@ -26,7 +26,7 @@ public class FileChooserController {
 
 	public void selectfile(ActionEvent event) {
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\PdfBox_Examples"));
+	//	fc.setInitialDirectory(new File("C:\\PdfBox_Examples"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PDF Files", "*.pdf"));
 		selectedFile = fc.showOpenDialog(null);
 
@@ -51,6 +51,7 @@ public class FileChooserController {
 			Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			currstage.close();
 			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.show();
 		} else {
 			warnlabel.setText("Choose Valid File First!");

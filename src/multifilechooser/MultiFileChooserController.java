@@ -31,7 +31,7 @@ public class MultiFileChooserController {
 	public static int NOOFFILES = 0;
 	public void selectmultifiles(ActionEvent event) {
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\PdfBox_Examples"));
+	//	fc.setInitialDirectory(new File("C:\\PdfBox_Examples"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PDF Files", "*.pdf"));
 		selectedFiles = fc.showOpenMultipleDialog(null);
 
@@ -63,6 +63,7 @@ public class MultiFileChooserController {
 			Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			currstage.close();
 			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.show();
 		} else {
 			warnlabel.setText("Choose Valid Files First!");

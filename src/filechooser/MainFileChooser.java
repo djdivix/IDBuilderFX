@@ -17,6 +17,7 @@ public class MainFileChooser extends Application {
 		scene.getStylesheets().add(getClass().getResource("FileChooserCSS.css").toExternalForm());
 		primaryStage.setTitle("IDBuilder - Select Single PDF File");
 		primaryStage.setScene(scene);
+		primaryStage.resizableProperty().setValue(Boolean.FALSE);
 		primaryStage.show();
 
 	}

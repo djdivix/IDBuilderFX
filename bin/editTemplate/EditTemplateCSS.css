@@ -1,0 +1,13 @@
+.button{
+	-fx-background-color: Aquamarine;
+}
+.button:pressed{
+	-fx-background-color: Turquoise;
+}
+#headtxt {
+    -fx-background-color: transparent;
+}
+.text-input {
+    -fx-text-fill: White;
+    -fx-prompt-text-fill: White;
+}

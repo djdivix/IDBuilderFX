@@ -17,6 +17,7 @@ public class MainmultiFileChooser extends Application {
 		scene.getStylesheets().add(getClass().getResource("MultifilechooserCSS.css").toExternalForm());
 		primaryStage.setTitle("IDBuilder - Select Multiple PDF Files");
 		primaryStage.setScene(scene);
+		primaryStage.resizableProperty().setValue(Boolean.FALSE);
 		primaryStage.show();
 
 	}

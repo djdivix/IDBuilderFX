@@ -189,6 +189,7 @@ public class EditTemplateController implements Initializable {
 			Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			currstage.close();
 			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.show();
 		}
 	}

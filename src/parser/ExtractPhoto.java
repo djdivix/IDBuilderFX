@@ -57,7 +57,7 @@ public class ExtractPhoto {
 }
 		System.out.println(imageFound);
 		if(imageFound!=1){
-			BufferedImage in = ImageIO.read(new File("src/images/nopic.jpg"));
+			BufferedImage in = ImageIO.read(ExtractPhoto.class.getResource("/images/nopic.jpg"));
             database.StorePhoto.storePhoto(empId,in);
 		}
 	document.close();	

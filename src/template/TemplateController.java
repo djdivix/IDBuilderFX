@@ -67,6 +67,7 @@ public class TemplateController implements Initializable {
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
 		stage.setScene(scene);
+		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.show();
 	}else if(temp3.isSelected()){
 		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplate2FXML.fxml"));
@@ -76,6 +77,7 @@ public class TemplateController implements Initializable {
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
 		stage.setScene(scene);
+		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.show();
 	}else{
 		Parent root = FXMLLoader.load(getClass().getResource("/editTemplate/EditTemplateFXML.fxml"));
@@ -85,6 +87,7 @@ public class TemplateController implements Initializable {
 		Stage currstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		currstage.close();
 		stage.setScene(scene);
+		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.show();
 	}
 	}

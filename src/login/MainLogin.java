@@ -17,6 +17,7 @@ public class MainLogin extends Application {
 		scene.getStylesheets().add(getClass().getResource("LoginCSS.css").toExternalForm());
 		primaryStage.setTitle("IDBuilder - Login PopUp Window");
 		primaryStage.setScene(scene);
+		primaryStage.resizableProperty().setValue(Boolean.FALSE);
 		primaryStage.show();
 
 	}

@@ -12,11 +12,12 @@ public class MainHome extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		Parent root = FXMLLoader.load(getClass().getResource("homeFXML.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("homeCSS.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("HomeCSS.css").toExternalForm());
 		primaryStage.setTitle("IDBuilder - Home");
 		primaryStage.setScene(scene);
+		primaryStage.resizableProperty().setValue(Boolean.FALSE);
 		primaryStage.show();
 
 	}
